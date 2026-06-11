@@ -1032,8 +1032,14 @@ async function runAgent(clientId) {
   output.className = 'agent-output loading';
   output.innerHTML = '<div class="agent-spinner">Thinking…</div>';
 
+  // ── YOUR SUPABASE FUNCTION URL ───────────────────────────────────
+  // Replace fawzlvdyavbggfwjynpf with the Reference ID from:
+  // Supabase dashboard → Project Settings → General → Reference ID
+  const SUPABASE_URL = 'https://fawzlvdyavbggfwjynpf.supabase.co/functions/v1/claude';
+  // ─────────────────────────────────────────────────────────────────
+
   try {
-    const res = await fetch('/api/claude', {
+    const res = await fetch(SUPABASE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1046,7 +1052,6 @@ async function runAgent(clientId) {
       }),
     });
 
-    if (res.status === 401) throw new Error('NO_KEY');
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
       throw new Error(err.error?.message || `API error ${res.status}`);
@@ -1055,7 +1060,6 @@ async function runAgent(clientId) {
     const data = await res.json();
     const text = data.content?.[0]?.text || '(no response)';
 
-    // Render formatted response
     output.className = 'agent-output';
     output.innerHTML = `
       <div class="agent-result">${formatResponse(text)}</div>
@@ -1064,28 +1068,18 @@ async function runAgent(clientId) {
 
   } catch (err) {
     output.className = 'agent-output';
-
-    if (err.message === 'NO_KEY' || !window.ANTHROPIC_KEY) {
-      // Show setup instructions instead of a cryptic error
-      output.innerHTML = `
-        <div class="agent-result">
-          <h3>API key not configured</h3>
-          The proxy function is running but <code>ANTHROPIC_API_KEY</code> is not set
-          in your Netlify environment variables yet.<br><br>
-          Go to: <strong>Vercel dashboard → Your project → Settings → Environment Variables</strong><br>
-          Add variable: <code>ANTHROPIC_API_KEY</code> = your key<br>
-          Then redeploy (Deployments → Redeploy).
-        </div>
-      `;
-    } else {
-      output.innerHTML = `
-        <div class="agent-result">
-          <h3>Error</h3>
-          ${err.message}<br><br>
-          Check that your API key is valid and has credits.
-        </div>
-      `;
-    }
+    output.innerHTML = `
+      <div class="agent-result">
+        <h3>Not connected yet</h3>
+        Two things to check:<br><br>
+        <strong>1. Replace fawzlvdyavbggfwjynpf in the HTML</strong><br>
+        Open this file, find <code>SUPABASE_URL</code> near line 1035 and swap in your real Supabase project ID.<br><br>
+        <strong>2. Add your key to Supabase</strong><br>
+        Supabase dashboard → Project Settings → Edge Functions → Secrets<br>
+        Add secret: <code>ANTHROPIC_API_KEY</code> = your <code>sk-ant-...</code> key<br><br>
+        Error detail: ${err.message}
+      </div>
+    `;
   } finally {
     btn.disabled = false;
     btn.textContent = 'Run →';
