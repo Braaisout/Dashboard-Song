@@ -17,6 +17,26 @@
     --t1: #FFF; --t2: rgba(255,255,255,0.6); --t3: rgba(255,255,255,0.35);
     --r: 4px; --rl: 8px; --rx: 12px; --tr: .17s ease;
   }
+  body.light {
+    --b: #F5F5F5; --w: #000;
+    --s1: #FFFFFF; --s2: #F0F0F0; --s3: #E8E8E8; --s4: #DEDEDE;
+    --bd: rgba(0,0,0,0.1); --bdp: rgba(161,0,255,0.35);
+    --t1: #0A0A0A; --t2: rgba(0,0,0,0.6); --t3: rgba(0,0,0,0.38);
+  }
+  body.light nav { background: rgba(245,245,245,0.95); }
+  body.light ::-webkit-scrollbar-track { background: #F5F5F5; }
+  body.light ::-webkit-scrollbar-thumb { background: #CCC; }
+  body, nav, .hero, .card, .modal, .m-brand, .page, .wrap,
+  .agent-input, .agent-output, .sandbox-iterate, .network-card,
+  .sandbox-toolbar, .sandbox-url, .showcase-label,
+  .step-card, .warn-box, .ok-box, .proto-card, .font-demo,
+  .social-card, .social-header, .social-body, .token-row,
+  .filter-bar, .fb, .m-tab, .m-panel { transition: background var(--tr), color var(--tr), border-color var(--tr); }
+
+  /* Light mode toggle button */
+  .theme-toggle { display: flex; align-items: center; gap: 7px; padding: 5px 11px; border-radius: 999px; border: .5px solid var(--bd); background: transparent; color: var(--t2); font-family: inherit; font-size: 12px; font-weight: 500; cursor: pointer; transition: all var(--tr); white-space: nowrap; flex-shrink: 0; }
+  .theme-toggle:hover { border-color: var(--p); color: var(--t1); }
+  .theme-toggle-icon { font-size: 14px; line-height: 1; }
   html { scroll-behavior: smooth; }
   body { font-family: 'Inter', sans-serif; background: var(--b); color: var(--t1); font-size: 14px; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
@@ -193,6 +213,42 @@
   .agent-ref-banner { background: rgba(239,159,39,.07); border: .5px solid rgba(239,159,39,.2); border-radius: var(--r); padding: 7px 11px; font-size: 11px; color: #F5C060; margin-bottom: 12px; }
   .agent-copy-btn { margin-top: 10px; padding: 5px 12px; border-radius: var(--r); border: .5px solid var(--bd); background: transparent; color: var(--t2); font-family: inherit; font-size: 11px; cursor: pointer; transition: all var(--tr); }
   .agent-copy-btn:hover { border-color: rgba(255,255,255,.25); color: var(--t1); }
+
+  /* ── PROTOTYPE SANDBOX ── */
+  .sandbox-wrap { display: flex; flex-direction: column; gap: 0; }
+  .sandbox-toolbar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--s3); border-radius: var(--r) var(--r) 0 0; border: .5px solid var(--bd); border-bottom: none; }
+  .sandbox-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .sandbox-url { flex: 1; background: var(--s4); border: .5px solid var(--bd); border-radius: var(--r); padding: 3px 8px; font-size: 11px; color: var(--t3); font-family: 'Courier New', monospace; }
+  .sandbox-frame { width: 100%; height: 420px; border: .5px solid var(--bd); border-radius: 0 0 var(--r) var(--r); background: #fff; }
+  .sandbox-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
+  .sandbox-iterate { flex: 1; background: var(--s3); border: .5px solid var(--bd); border-radius: var(--r); padding: 8px 11px; font-family: inherit; font-size: 12px; color: var(--t1); min-width: 0; }
+  .sandbox-iterate:focus { outline: none; border-color: rgba(161,0,255,.5); }
+  .sandbox-iterate::placeholder { color: var(--t3); }
+  .sandbox-iterate-btn { padding: 8px 14px; background: var(--s3); border: .5px solid var(--bdp); border-radius: var(--r); color: var(--p); font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; transition: all var(--tr); white-space: nowrap; }
+  .sandbox-iterate-btn:hover { background: rgba(161,0,255,.12); }
+  .sandbox-open-btn { padding: 8px 12px; background: transparent; border: .5px solid var(--bd); border-radius: var(--r); color: var(--t2); font-family: inherit; font-size: 11px; cursor: pointer; transition: all var(--tr); }
+  .sandbox-open-btn:hover { border-color: rgba(255,255,255,.25); color: var(--t1); }
+  .sandbox-history { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; max-height: 120px; overflow-y: auto; }
+  .sandbox-history-item { font-size: 11px; color: var(--t3); padding: 4px 8px; background: var(--s3); border-radius: var(--r); cursor: pointer; transition: color var(--tr); }
+  .sandbox-history-item:hover { color: var(--t2); }
+  .sandbox-empty { display: flex; align-items: center; justify-content: center; height: 420px; background: var(--s3); border: .5px solid var(--bd); border-radius: 0 0 var(--r) var(--r); }
+  .sandbox-empty-text { font-size: 13px; color: var(--t3); text-align: center; line-height: 1.6; }
+
+  /* ── VISUAL SHOWCASES ── */
+  .showcase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .showcase-card { border-radius: var(--r); overflow: hidden; border: .5px solid var(--bd); }
+  .showcase-preview { height: 110px; display: flex; align-items: center; justify-content: center; padding: 14px; }
+  .showcase-label { font-size: 10px; color: var(--t3); padding: 6px 10px; background: var(--s3); font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+
+  /* ── AGENT NETWORK ── */
+  .network-card { background: var(--s1); border: .5px solid var(--bdp); border-radius: var(--rl); padding: 16px 18px; margin-top: 18px; }
+  .network-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--p); margin-bottom: 8px; }
+  .network-agent-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+  .network-agent-btn { padding: 5px 12px; border-radius: 999px; border: .5px solid var(--bdp); background: rgba(161,0,255,.07); color: #C966FF; font-family: inherit; font-size: 11px; font-weight: 500; cursor: pointer; transition: all var(--tr); }
+  .network-agent-btn:hover { background: rgba(161,0,255,.18); }
+  .network-status { font-size: 11px; color: var(--t3); display: flex; align-items: center; gap: 6px; }
+  .network-dot-off { width: 6px; height: 6px; border-radius: 50%; background: var(--t3); flex-shrink: 0; }
+  .network-dot-on { width: 6px; height: 6px; border-radius: 50%; background: #4ECBA0; flex-shrink: 0; animation: pulse 2s infinite; }
 </style>
 </head>
 <body>
@@ -210,58 +266,162 @@
     <li class="nav-tab" onclick="showPage('prototypes',this)">Prototypes</li>
     <li class="nav-tab" onclick="showPage('connect',this)">Connect data</li>
   </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle light/dark mode">
+    <span class="theme-toggle-icon" id="theme-icon">☀</span>
+    <span id="theme-label">Light</span>
+  </button>
 </nav>
 
 <!-- ══ OVERVIEW ══ -->
 <div id="page-overview" class="page active">
   <div class="hero">
-    <div class="eyebrow">Client intelligence · Design & digital products</div>
-    <h1 class="htitle">Netherlands<br>&amp; <span>Nordics</span></h1>
-    <p class="hsub">Design systems, live social examples and prototype concepts — all connected to client brand data. Click any client to explore their full brand profile.</p>
+    <div class="eyebrow">Accenture Song · NL & Nordics · Client intelligence</div>
+    <h1 class="htitle">Products &amp; experiences<br>built for <span>real clients</span></h1>
+    <p class="hsub">What Song is building — active digital products, live campaigns, and prototype opportunities across the Netherlands and Nordics. Click any client to explore and build with their brand.</p>
     <div class="stats">
-      <div><div class="stat-v">5</div><div class="stat-l">Markets</div></div>
-      <div><div class="stat-v"><span>6</span></div><div class="stat-l">Song studios</div></div>
-      <div><div class="stat-v">16</div><div class="stat-l">Clients</div></div>
-      <div><div class="stat-v"><span>B01LER</span></div><div class="stat-l">Song DS (open source)</div></div>
-      <div><div class="stat-v"><span>Skapa</span></div><div class="stat-l">IKEA DS (public npm)</div></div>
+      <div><div class="stat-v">8</div><div class="stat-l">Active clients</div></div>
+      <div><div class="stat-v"><span>5</span></div><div class="stat-l">Markets</div></div>
+      <div><div class="stat-v">1</div><div class="stat-l">Cannes Gold Lion</div></div>
+      <div><div class="stat-v"><span>2</span></div><div class="stat-l">Red Dot wins</div></div>
+      <div><div class="stat-v"><span>39</span></div><div class="stat-l">Randstad markets</div></div>
     </div>
   </div>
   <div class="wrap">
-    <div class="sec-head mb24"><div class="sec-t">Design system status</div><div class="sec-line"></div></div>
-    <div class="grid4 mb40">
-      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
-        <div style="font-size:11px;font-weight:600;color:#4ECBA0;margin-bottom:6px;">IKEA Skapa ✓ Public</div>
-        <div style="font-size:12px;color:var(--t2);line-height:1.5;">72+ components · React Storybook · npm @ingka/button etc. · 200+ product teams · Noto Sans typeface · Blue #003399 / Yellow #FFDB00</div>
+
+    <div class="sec-head mb24"><div class="sec-t">What Song is building right now</div><div class="sec-line"></div></div>
+    <div class="grid3 mb40">
+
+      <div style="background:var(--s1);border:.5px solid var(--bdp);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="showPage('clients',document.querySelector('[onclick*=clients]'))">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--p);"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;border-radius:var(--r);background:#0058A3;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;">R</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;">Randstad NV</div>
+            <div style="font-size:11px;color:var(--t3);">Global AOR · HR & Staffing</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">GenAI-powered content engine running across 39 markets. Song is producing brand-consistent creative at a scale that was previously impossible — anchored in Amsterdam.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="pill pill-p">GenAI content engine</span>
+          <span class="pill pill-t">Live · 39 markets</span>
+        </div>
       </div>
-      <div style="background:var(--s1);border:.5px solid rgba(161,0,255,.3);border-radius:var(--rl);padding:16px;">
-        <div style="font-size:11px;font-weight:600;color:#C966FF;margin-bottom:6px;">B01LER (Song) ✓ Open source</div>
-        <div style="font-size:12px;color:var(--t2);line-height:1.5;">Song's own design system · github.com/deven-org/boiler · MIT licence · Web components · Tokens Studio + Figma sync · Safe sandbox base</div>
+
+      <div style="background:var(--s1);border:.5px solid rgba(255,215,0,.25);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="showPage('clients',document.querySelector('[onclick*=clients]'))">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#FFD700;"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;border-radius:var(--r);background:#003399;color:#FFDB00;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;">IKEA</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;">IKEA Denmark</div>
+            <div style="font-size:11px;color:var(--t3);">Digital product AOR · Cannes Gold Lion</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">CIRKULÄR — buy back used furniture, refurbish it, resell it. Behaviour design at retail scale. Won the Cannes Gold Lion and now a replicable model for circular commerce.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="pill pill-t">Cannes Gold Lion 2022</span>
+          <span class="pill pill-b">Circular retail</span>
+        </div>
       </div>
-      <div style="background:var(--s1);border:.5px solid rgba(239,159,39,.3);border-radius:var(--rl);padding:16px;">
-        <div style="font-size:11px;font-weight:600;color:#F5C060;margin-bottom:6px;">Randstad Design ⚠ Gated</div>
-        <div style="font-size:12px;color:var(--t2);line-height:1.5;">randstad.design — robots-disallowed. Identity by Studio Dumbar/DEPT. Spezia typeface · Blue #0058A3. Request access via Song AOR relationship.</div>
+
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.25);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="showPage('clients',document.querySelector('[onclick*=clients]'))">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#4ECBA0;"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;border-radius:var(--r);background:#003087;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;">TEL</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;">Telenor Norway</div>
+            <div style="font-size:11px;color:var(--t3);">Cloud transformation · Ongoing</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">Rebuilding Norway's largest telco as a software-driven product company. Cloud-native infrastructure enabling faster product launches and better customer experience.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="pill pill-b">Cloud transformation</span>
+          <span class="pill pill-t">Live · Norway</span>
+        </div>
       </div>
-      <div style="background:var(--s1);border:.5px solid rgba(239,159,39,.3);border-radius:var(--rl);padding:16px;">
-        <div style="font-size:11px;font-weight:600;color:#F5C060;margin-bottom:6px;">ABN AMRO / NL DS ⚠ Partial</div>
-        <div style="font-size:12px;color:var(--t2);line-height:1.5;">NL Design System (nl-design-system/themes on GitHub) has ABN AMRO tokens. Bespoke ABN font. Green #00A050. Accessible by Song NL team.</div>
+
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="showPage('clients',document.querySelector('[onclick*=clients]'))">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;border-radius:var(--r);background:#003366;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;">ALDI</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;">ALDI Nord</div>
+            <div style="font-size:11px;color:var(--t3);">Tech + creative · NL pilot</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">"Patata" — the viral fresh produce rap campaign won Red Dot 2025. Meanwhile Accenture is running one of Europe's largest SAP cloud rollouts in the Netherlands pilot region.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="pill pill-a">Red Dot 2025</span>
+          <span class="pill pill-g">SAP S/4HANA NL</span>
+        </div>
+      </div>
+
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="showPage('clients',document.querySelector('[onclick*=clients]'))">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;border-radius:var(--r);background:#00A1DE;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;">KLM</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;">KLM Royal Dutch Airlines</div>
+            <div style="font-size:11px;color:var(--t3);">Digital marketing · Netherlands</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">#MyKLMStory UGC campaign driving 18K+ organic interactions. Paid media amplification and experience design as KLM modernises its app and pre-flight digital touchpoints.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="pill pill-b">2.1M Instagram followers</span>
+          <span class="pill pill-t">UGC mechanic</span>
+        </div>
+      </div>
+
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="showPage('clients',document.querySelector('[onclick*=clients]'))">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;border-radius:var(--r);background:#C9A96E;color:#1C1C1A;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;">R</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;">Rituals Cosmetics</div>
+            <div style="font-size:11px;color:var(--t3);">Digital CX · Amsterdam</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">Digital experience and CRM for one of Amsterdam's best-known luxury brands. 1.4M Instagram followers. Expanding to Asia and US — Song's global footprint is a direct asset.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          <span class="pill pill-p">Luxury beauty</span>
+          <span class="pill pill-t">Global expansion</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sec-head mb24"><div class="sec-t">Prototype opportunities — ready to build</div><div class="sec-line"></div></div>
+    <div class="grid2 mb40">
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:18px;">
+        <div style="font-size:11px;font-weight:600;color:#4ECBA0;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Build-ready · IKEA Skapa on npm</div>
+        <div style="font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;">CIRKULÄR product recommender</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">A second-hand IKEA finder that recommends buying refurbished instead of new. Built using public Skapa components. Prototype in a day.</div>
+        <div style="font-size:11px;color:var(--p);font-weight:600;cursor:pointer;" onclick="showPage('prototypes',document.querySelector('[onclick*=prototypes]'))">Open in Prototypes tab →</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:18px;">
+        <div style="font-size:11px;font-weight:600;color:#F5C060;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Concept · Needs DS access</div>
+        <div style="font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;">Randstad AI job match interface</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:10px;">Conversational job matching that extends the GenAI content engine Song is already running. Aligns directly with Randstad's "partner for talent" strategy.</div>
+        <div style="font-size:11px;color:var(--p);font-weight:600;cursor:pointer;" onclick="showPage('clients',document.querySelector('[onclick*=clients]'))">View Randstad profile →</div>
       </div>
     </div>
 
-    <div class="sec-head mb24"><div class="sec-t">Landmark engagements</div><div class="sec-line"></div></div>
-    <div class="grid2">
-      <div style="background:var(--s1);border:.5px solid var(--bdp);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--p);"></div>
-        <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:7px;">Global AOR · May 2024</div>
-        <div style="font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:5px;">Randstad NV</div>
-        <div style="font-size:12px;color:var(--t2);line-height:1.52;">GenAI-powered content engine · 39 markets · marketing transformation</div>
+    <div class="sec-head mb24"><div class="sec-t">Song NL & Nordics at a glance</div><div class="sec-line"></div></div>
+    <div class="grid4">
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:22px;font-weight:700;color:var(--p);margin-bottom:4px;">€24B</div>
+        <div style="font-size:11px;color:var(--t2);line-height:1.5;">Randstad annual revenue — the scale of Song's global AOR anchor client</div>
       </div>
-      <div style="background:var(--s1);border:.5px solid rgba(255,215,0,.22);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#FFD700;"></div>
-        <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#FFD700;margin-bottom:7px;">Cannes Gold Lion · Nordic-led</div>
-        <div style="font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:5px;">IKEA CIRKULÄR</div>
-        <div style="font-size:12px;color:var(--t2);line-height:1.52;">Circular retail campaign · buy-back / refurbish / resell · behaviour design</div>
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:22px;font-weight:700;color:var(--p);margin-bottom:4px;">4.1M</div>
+        <div style="font-size:11px;color:var(--t2);line-height:1.5;">TikTok views on ALDI Patata — Song NL's most viral recent creative win</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:22px;font-weight:700;color:var(--p);margin-bottom:4px;">€44.6B</div>
+        <div style="font-size:11px;color:var(--t2);line-height:1.5;">IKEA global revenue — digital product AOR relationship run from Copenhagen</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:22px;font-weight:700;color:var(--p);margin-bottom:4px;">NOK 14B</div>
+        <div style="font-size:11px;color:var(--t2);line-height:1.5;">Telenor Norway revenue — cloud transformation engagement ongoing since 2023</div>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -290,110 +450,82 @@
 <div id="page-social" class="page">
   <div class="hero" style="padding-bottom:28px;">
     <div class="eyebrow">Social intelligence</div>
-    <h1 class="htitle" style="font-size:32px;">Live examples</h1>
-    <p class="hsub" style="margin-bottom:0;">Representative examples of what each client is running socially — format, tone, engagement type — based on public campaigns. Not scraped live; updated manually or via API.</p>
+    <h1 class="htitle" style="font-size:32px;">Live social <span>crawler</span></h1>
+    <p class="hsub" style="margin-bottom:0;">AI-powered search across public social channels. Pick a client, hit Fetch — Claude searches for their latest campaigns, posts and tone. Results are fresh each time, not cached.</p>
   </div>
   <div class="wrap">
-    <div class="sec-head mb24"><div class="sec-t">Netherlands</div><div class="sec-line"></div></div>
-    <div class="grid3 mb40">
 
-      <div class="social-card">
-        <div class="social-header">
-          <div class="social-avatar" style="background:#0058A3;color:#fff;">R</div>
-          <div><div class="social-handle">Randstad Nederland</div><div class="social-platform">LinkedIn · 847K followers</div></div>
-          <div class="social-live"><div class="live-dot"></div>Active</div>
+    <div style="background:var(--s1);border:.5px solid var(--bdp);border-radius:var(--rl);padding:20px;margin-bottom:28px;">
+      <div class="m-sec" style="margin-bottom:12px;">Search social presence</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;" id="social-client-btns"></div>
+      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:11px;color:var(--t3);margin-bottom:5px;font-weight:500;">Selected client</div>
+          <div id="social-selected" style="font-size:13px;font-weight:600;color:var(--t2);">None selected</div>
         </div>
-        <div class="social-body">
-          <div class="social-img" style="background:#0058A3;color:#B5D4F4;">Employer Brand Campaign · 2024</div>
-          <div class="social-text">"Work is changing — and we're changing with it. Discover how Randstad helps talent find the work that works for them." #PartnerForTalent #WorkTrends</div>
-          <div class="social-stats"><span>↑ 4.2K reactions</span><span>312 shares</span><span>LinkedIn native video</span></div>
+        <div style="flex:2;min-width:200px;">
+          <div style="font-size:11px;color:var(--t3);margin-bottom:5px;font-weight:500;">Focus (optional)</div>
+          <input id="social-focus" style="width:100%;background:var(--s3);border:.5px solid var(--bd);border-radius:var(--r);padding:8px 11px;font-family:inherit;font-size:12px;color:var(--t1);" placeholder="e.g. sustainability campaigns, TikTok content, employer brand...">
         </div>
+        <button id="social-fetch-btn" onclick="fetchSocial()" style="padding:0 20px;height:38px;background:var(--p);border:none;border-radius:var(--r);color:#fff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background var(--tr);">Fetch live ↗</button>
       </div>
-
-      <div class="social-card">
-        <div class="social-header">
-          <div class="social-avatar" style="background:#00A050;color:#fff;">AA</div>
-          <div><div class="social-handle">ABN AMRO</div><div class="social-platform">Instagram · 121K followers</div></div>
-          <div class="social-live"><div class="live-dot"></div>Active</div>
-        </div>
-        <div class="social-body">
-          <div class="social-img" style="background:#00A050;color:#C0DD97;">Sustainability Report · 2025</div>
-          <div class="social-text">Banking for a better planet starts with better choices. See how we're making our clients' sustainability ambitions real in 2025. 🌱</div>
-          <div class="social-stats"><span>↑ 890 likes</span><span>Carousel post</span><span>Always-on ESG</span></div>
-        </div>
-      </div>
-
-      <div class="social-card">
-        <div class="social-header">
-          <div class="social-avatar" style="background:#00A1DE;color:#fff;">KLM</div>
-          <div><div class="social-handle">KLM Royal Dutch Airlines</div><div class="social-platform">Instagram · 2.1M followers</div></div>
-          <div class="social-live"><div class="live-dot"></div>Active</div>
-        </div>
-        <div class="social-body">
-          <div class="social-img" style="background:#003087;color:#85B7EB;">Journey Stories · UGC campaign</div>
-          <div class="social-text">From Amsterdam to anywhere. Your stories inspire us. Share your KLM journey with #MyKLMStory 💙✈️</div>
-          <div class="social-stats"><span>↑ 18.4K likes</span><span>UGC mechanic</span><span>Stories + Reels</span></div>
-        </div>
-      </div>
-
-      <div class="social-card">
-        <div class="social-header">
-          <div class="social-avatar" style="background:#C9A96E;color:#1C1C1A;">R</div>
-          <div><div class="social-handle">Rituals Cosmetics</div><div class="social-platform">Instagram · 1.4M followers</div></div>
-          <div class="social-live"><div class="live-dot"></div>Active</div>
-        </div>
-        <div class="social-body">
-          <div class="social-img" style="background:#1C1C1A;color:#C9A96E;">Morning routine · Reels</div>
-          <div class="social-text">Start every morning as a ritual, not a routine. The Sakura collection — find stillness in the moment. 🌸</div>
-          <div class="social-stats"><span>↑ 31K likes</span><span>Reel · 2.8M views</span><span>Product lifestyle</span></div>
-        </div>
-      </div>
-
-      <div class="social-card">
-        <div class="social-header">
-          <div class="social-avatar" style="background:#003366;color:#fff;">ALDI</div>
-          <div><div class="social-handle">ALDI Nord DE/NL</div><div class="social-platform">TikTok · 289K followers</div></div>
-          <div class="social-live"><div class="live-dot"></div>Active</div>
-        </div>
-        <div class="social-body">
-          <div class="social-img" style="background:#003366;color:#FF6600;">ALDI Patata · Viral campaign 2025</div>
-          <div class="social-text">"Patata!" 🥔 The fresh produce rap is back. Shout it out — Red Dot Award winner 2025. #Patata #ALDINord</div>
-          <div class="social-stats"><span>↑ 4.1M views</span><span>Viral TikTok</span><span>Song creative ✓</span></div>
-        </div>
-      </div>
-
     </div>
 
-    <div class="sec-head mb24"><div class="sec-t">Nordics</div><div class="sec-line"></div></div>
-    <div class="grid3">
+    <div id="social-results">
+      <div class="sec-head mb24"><div class="sec-t">Saved examples</div><div class="sec-line"></div></div>
+      <div class="grid3 mb40">
 
-      <div class="social-card">
-        <div class="social-header">
-          <div class="social-avatar" style="background:#003399;color:#FFDB00;">IKEA</div>
-          <div><div class="social-handle">IKEA Sverige / IKEA DK</div><div class="social-platform">Instagram · 3.2M global followers</div></div>
-          <div class="social-live"><div class="live-dot"></div>Active</div>
+        <div class="social-card">
+          <div class="social-header">
+            <div class="social-avatar" style="background:#0058A3;color:#fff;">R</div>
+            <div><div class="social-handle">Randstad Nederland</div><div class="social-platform">LinkedIn · 847K followers</div></div>
+            <div class="social-live"><div class="live-dot"></div>Saved</div>
+          </div>
+          <div class="social-body">
+            <div class="social-img" style="background:#0058A3;color:#B5D4F4;">Employer Brand Campaign · 2024</div>
+            <div class="social-text">"Work is changing — and we're changing with it. Discover how Randstad helps talent find the work that works for them." #PartnerForTalent #WorkTrends</div>
+            <div class="social-stats"><span>↑ 4.2K reactions</span><span>312 shares</span><span>LinkedIn native video</span></div>
+          </div>
         </div>
-        <div class="social-body">
-          <div class="social-img" style="background:#003399;color:#FFDB00;">CIRKULÄR · Cannes Gold Lion</div>
-          <div class="social-text">We bought your old furniture back. We refurbished it. Now it's on sale again. Circular shopping starts here. 🔄 #CIRKULÄR</div>
-          <div class="social-stats"><span>↑ 89K likes</span><span>Song creative ✓</span><span>Cannes 2022</span></div>
+
+        <div class="social-card">
+          <div class="social-header">
+            <div class="social-avatar" style="background:#003399;color:#FFDB00;">IKEA</div>
+            <div><div class="social-handle">IKEA Sverige / IKEA DK</div><div class="social-platform">Instagram · 3.2M global followers</div></div>
+            <div class="social-live"><div class="live-dot"></div>Saved</div>
+          </div>
+          <div class="social-body">
+            <div class="social-img" style="background:#003399;color:#FFDB00;">CIRKULÄR · Cannes Gold Lion</div>
+            <div class="social-text">We bought your old furniture back. We refurbished it. Now it's on sale again. Circular shopping starts here. 🔄 #CIRKULÄR</div>
+            <div class="social-stats"><span>↑ 89K likes</span><span>Song creative ✓</span><span>Cannes 2022</span></div>
+          </div>
         </div>
+
+        <div class="social-card">
+          <div class="social-header">
+            <div class="social-avatar" style="background:#003366;color:#fff;">ALDI</div>
+            <div><div class="social-handle">ALDI Nord DE/NL</div><div class="social-platform">TikTok · 289K followers</div></div>
+            <div class="social-live"><div class="live-dot"></div>Saved</div>
+          </div>
+          <div class="social-body">
+            <div class="social-img" style="background:#003366;color:#FF6600;">ALDI Patata · Viral campaign 2025</div>
+            <div class="social-text">"Patata!" 🥔 The fresh produce rap is back. Red Dot Award winner 2025. #Patata #ALDINord</div>
+            <div class="social-stats"><span>↑ 4.1M views</span><span>Viral TikTok</span><span>Song creative ✓</span></div>
+          </div>
+        </div>
+
       </div>
-
-      <div class="social-card">
-        <div class="social-header">
-          <div class="social-avatar" style="background:#003087;color:#fff;">TEL</div>
-          <div><div class="social-handle">Telenor Norge</div><div class="social-platform">LinkedIn · 71K followers</div></div>
-          <div class="social-live"><div class="live-dot"></div>Active</div>
-        </div>
-        <div class="social-body">
-          <div class="social-img" style="background:#003087;color:#85B7EB;">Cloud transformation · 2023–</div>
-          <div class="social-text">Building Norway's most modern telco — one cloud-native product at a time. How we're becoming a truly software-driven company. 📡</div>
-          <div class="social-stats"><span>↑ 1.2K reactions</span><span>Thought leadership</span><span>Accenture partner</span></div>
-        </div>
-      </div>
-
     </div>
+
+    <div id="social-live-results" style="display:none;">
+      <div class="sec-head mb24">
+        <div class="sec-t" id="social-live-label">Live results</div>
+        <div class="sec-line"></div>
+        <div id="social-fetch-time" style="font-size:10px;color:var(--t3);white-space:nowrap;"></div>
+      </div>
+      <div id="social-cards-grid" class="grid3"></div>
+    </div>
+
   </div>
 </div>
 
@@ -416,7 +548,7 @@
         </div>
         <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A CIRKULÄR-branded product finder that recommends second-hand IKEA items to replace what a customer is about to buy new. Uses Skapa component library.</div>
         <div class="pill-row"><span class="pill pill-t">Skapa tokens</span><span class="pill pill-b">React</span><span class="pill pill-p">AI recommendation</span></div>
-        <div class="cta">Prototype this ↗</div>
+        <div class="cta" style="cursor:pointer;" onclick="openModalOnTab('ikea',3)">Prototype this — open in AI Agent ↗</div>
       </div>
 
       <div class="proto-card">
@@ -427,7 +559,7 @@
         </div>
         <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">Upload a photo of your room → AI identifies IKEA products already there → generates a shopping list for the missing pieces. Built on Skapa's mobile component set.</div>
         <div class="pill-row"><span class="pill pill-t">Vision AI</span><span class="pill pill-b">Mobile</span><span class="pill pill-t">Skapa tokens</span></div>
-        <div class="cta">Prototype this ↗</div>
+        <div class="cta" style="cursor:pointer;" onclick="openModalOnTab('ikea',3)">Prototype this — open in AI Agent ↗</div>
       </div>
 
       <div class="proto-card">
@@ -438,7 +570,7 @@
         </div>
         <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A conversational job matching interface using Randstad's AI capabilities — aligned with the GenAI content engine Song is already building. Randstad's design system access needed.</div>
         <div class="pill-row"><span class="pill pill-p">Conversational AI</span><span class="pill pill-a">Needs DS access</span></div>
-        <div class="cta">Request via AOR contact ↗</div>
+        <div class="cta" style="cursor:pointer;" onclick="openModalOnTab('randstad',3)">Explore in AI Agent ↗</div>
       </div>
 
       <div class="proto-card">
@@ -449,7 +581,7 @@
         </div>
         <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A pre-trip personalised digital brief — local weather, things to do, gate info, carbon offset — in KLM brand styling using B01LER as the base DS with KLM token overrides.</div>
         <div class="pill-row"><span class="pill pill-p">B01LER base</span><span class="pill pill-b">Travel UX</span><span class="pill pill-t">Personalisation</span></div>
-        <div class="cta">Prototype this ↗</div>
+        <div class="cta" style="cursor:pointer;" onclick="openModalOnTab('klm',3)">Prototype this — open in AI Agent ↗</div>
       </div>
 
       <div class="proto-card">
@@ -460,7 +592,7 @@
         </div>
         <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A personal finance carbon footprint tracker integrated into ABN AMRO's banking app — using NL Design System tokens which include ABN AMRO theming.</div>
         <div class="pill-row"><span class="pill pill-t">NL DS tokens</span><span class="pill pill-b">FinTech</span><span class="pill pill-p">ESG</span></div>
-        <div class="cta">Explore NL DS tokens ↗</div>
+        <div class="cta" style="cursor:pointer;" onclick="openModalOnTab('abn',3)">Explore in AI Agent ↗</div>
       </div>
 
       <div class="proto-card">
@@ -471,7 +603,7 @@
         </div>
         <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A personalised morning/evening ritual builder — AI recommends products based on your lifestyle, mood and season. B01LER base with Rituals brand token overrides.</div>
         <div class="pill-row"><span class="pill pill-p">AI personalisation</span><span class="pill pill-a">Beauty</span><span class="pill pill-g">B01LER base</span></div>
-        <div class="cta">Prototype with B01LER ↗</div>
+        <div class="cta" style="cursor:pointer;" onclick="openModalOnTab('rituals',3)">Prototype this — open in AI Agent ↗</div>
       </div>
 
     </div>
@@ -825,6 +957,8 @@ function openModal(id) {
       <div class="font-demo"><div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--t1);margin-bottom:4px;">${b.sample}</div></div>
       <div style="font-size:11px;color:var(--t3);margin-bottom:2px;">${b.font}</div>
       <div style="font-size:11px;color:var(--t3);margin-bottom:16px;">${b.fontb}</div>
+      <div class="m-sec">Visual showcases</div>
+      <div class="showcase-grid">${buildShowcases(c)}</div>
       <div class="m-sec">Design system</div>
       <div style="background:var(--s3);border-radius:var(--r);padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--t2);">${b.dsStatus}</div>
       ${tokens ? `<div class="m-sec">Design tokens</div>${tokens}` : ''}
@@ -873,6 +1007,7 @@ function showPage(id, tab) {
 
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 renderClients('all');
+initSocialClientBtns();
 
 /* ═══════════════════════════════════════════════════
    AGENT LAYER
@@ -890,210 +1025,512 @@ function setAgentContext(client) {
 }
 
 // Builds the agent panel HTML injected into mp-4
+// Builds the agent panel HTML injected into mp-4
 function buildAgentPanel(c) {
   const dsMode = c.brand.dsStatus.startsWith('✅') ? 'public' : 'reference';
   const banner = dsMode === 'public'
-    ? `<div class="agent-ds-banner">● Live design tokens available — agent will use real ${c.name} token values</div>`
-    : `<div class="agent-ref-banner">◆ Reference mode — agent uses publicly known brand data. Not client-approved.</div>`;
+    ? `<div class="agent-ds-banner">● Live design tokens — agent uses real ${c.name} values</div>`
+    : `<div class="agent-ref-banner">◆ Reference mode — publicly known brand data. Not client-approved.</div>`;
 
   const modes = [
-    { id:'concept',   label:'Generate concept',    hint:'Describe a product idea or feature to prototype' },
-    { id:'audit',     label:'Audit components',    hint:'What user flow do you want to build?' },
-    { id:'mvpflow',   label:'Build MVP flow',      hint:'Which feature or journey?' },
-    { id:'copywrite', label:'Write UI copy',        hint:'Describe a screen or component' },
-    { id:'freeform',  label:'Ask anything',         hint:'Ask any question about this client or their design system' },
+    { id:'prototype', label:'Build prototype',  hint:'Describe a screen or flow — get a live clickable prototype in the brand colours' },
+    { id:'concept',   label:'Generate concept',  hint:'Describe a product idea or feature' },
+    { id:'audit',     label:'Audit DS gaps',     hint:'What user flow do you want to build?' },
+    { id:'mvpflow',   label:'MVP flow',           hint:'Which feature or journey?' },
+    { id:'copywrite', label:'Write UI copy',      hint:'Describe a screen or component' },
+    { id:'freeform',  label:'Ask anything',       hint:'Any question about this client or their design system' },
   ];
-
   const modeBtns = modes.map(m =>
-    `<button class="agent-mode-btn" data-mode="${m.id}" data-hint="${m.hint}"
-       onclick="selectMode(this)">${m.label}</button>`
+    `<button class="agent-mode-btn" data-mode="${m.id}" data-hint="${m.hint}" onclick="selectMode(this)">${m.label}</button>`
+  ).join('');
+
+  const networkAgents = [
+    { id:'strategist', label:'Strategist' },
+    { id:'ux',         label:'UX auditor' },
+    { id:'copy',       label:'Copy agent' },
+    { id:'research',   label:'Research' },
+  ];
+  const networkBtns = networkAgents.map(a =>
+    `<button class="network-agent-btn" onclick="callNetworkAgent('${c.id}','${a.id}')">${a.label}</button>`
   ).join('');
 
   return `
     <div class="agent-wrap" id="agent-wrap-${c.id}">
       ${banner}
       <div>
-        <div class="m-sec" style="margin-bottom:8px;">What do you want to do?</div>
+        <div class="m-sec" style="margin-bottom:8px;">Mode</div>
         <div class="agent-mode-row">${modeBtns}</div>
       </div>
       <div class="agent-input-row">
         <textarea class="agent-input" id="agent-input-${c.id}"
-          placeholder="Select a mode above, or just type your question…"
+          placeholder="Select 'Build prototype' to get a live rendered screen you can iterate on…"
           rows="2"
           onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();runAgent('${c.id}')}"
         ></textarea>
-        <button class="agent-run-btn" id="agent-btn-${c.id}" onclick="runAgent('${c.id}')">
-          Run →
-        </button>
+        <button class="agent-run-btn" id="agent-btn-${c.id}" onclick="runAgent('${c.id}')">Run →</button>
       </div>
-      <div class="agent-output" id="agent-output-${c.id}">
-        <div class="agent-placeholder">Output will appear here. Select a mode and describe what you need.</div>
+      <div id="agent-output-${c.id}" class="agent-output">
+        <div class="agent-placeholder">Select "Build prototype" → describe a screen → get a live interactive mockup in ${c.name}'s brand colours. Then iterate on it in plain language.</div>
+      </div>
+      <div class="network-card">
+        <div class="network-label">Agent network</div>
+        <div style="font-size:12px;color:var(--t2);margin-bottom:10px;line-height:1.5;">Specialist agents from the connected project. They receive ${c.name}'s context automatically.</div>
+        <div class="network-agent-row">${networkBtns}</div>
+        <div class="network-status">
+          <span class="network-dot-off"></span>
+          <span id="network-status-${c.id}">Not connected — share the other repo's endpoint URL to wire these up</span>
+        </div>
       </div>
     </div>
   `;
 }
 
-// Highlights the selected mode button and updates placeholder
+// ── VISUAL SHOWCASES ──────────────────────────────
+function buildShowcases(c) {
+  const b = c.brand;
+  const p  = b.colors[0]?.h || '#333';
+  const bg = b.bg;
+  const tx = b.txt;
+
+  const showcases = [
+    { label: 'Primary button', bg: '#f5f5f5', html:
+      `<div style="display:inline-flex;align-items:center;padding:10px 22px;background:${p};color:${tx};border-radius:4px;font-size:13px;font-weight:600;font-family:sans-serif;">Get started</div>` },
+
+    { label: 'Button pair', bg: '#f5f5f5', html:
+      `<div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <div style="padding:9px 18px;background:${p};color:${tx};border-radius:4px;font-size:12px;font-weight:600;font-family:sans-serif;">Primary</div>
+        <div style="padding:8px 18px;background:transparent;color:${p};border:1.5px solid ${p};border-radius:4px;font-size:12px;font-weight:600;font-family:sans-serif;">Secondary</div>
+      </div>` },
+
+    { label: 'Content card', bg: '#f0f0f0', html:
+      `<div style="background:#fff;border-radius:8px;overflow:hidden;width:160px;font-family:sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.1);">
+        <div style="height:52px;background:${p};"></div>
+        <div style="padding:10px 12px;">
+          <div style="font-size:12px;font-weight:700;color:#111;margin-bottom:3px;">${b.logotxt}</div>
+          <div style="font-size:10px;color:#666;line-height:1.4;">${c.tagline.slice(0,36)}...</div>
+        </div>
+       </div>` },
+
+    { label: 'Navigation', bg: bg, html:
+      `<div style="background:${bg};padding:10px 14px;display:flex;align-items:center;justify-content:space-between;width:100%;box-sizing:border-box;font-family:sans-serif;">
+        <div style="font-size:13px;font-weight:700;color:${tx};">${b.logotxt}</div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="font-size:11px;color:${tx};opacity:.65;">About</span>
+          <span style="font-size:11px;color:${tx};opacity:.65;">Work</span>
+          <span style="font-size:11px;padding:5px 11px;background:${p};color:${tx};border-radius:3px;">Contact</span>
+        </div>
+       </div>` },
+
+    { label: 'Status badges', bg: '#f5f5f5', html:
+      `<div style="display:flex;gap:5px;flex-wrap:wrap;">
+        <span style="padding:3px 9px;background:${p};color:${tx};border-radius:999px;font-size:10px;font-family:sans-serif;">Active</span>
+        <span style="padding:3px 9px;background:transparent;color:${p};border:1px solid ${p};border-radius:999px;font-size:10px;font-family:sans-serif;">Pending</span>
+        <span style="padding:3px 9px;background:#eee;color:#555;border-radius:999px;font-size:10px;font-family:sans-serif;">Closed</span>
+       </div>` },
+
+    { label: 'Hero section', bg: bg, html:
+      `<div style="background:${bg};padding:12px 14px;width:100%;box-sizing:border-box;font-family:sans-serif;">
+        <div style="font-size:9px;color:${p};font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;">${c.sector}</div>
+        <div style="font-size:14px;font-weight:700;color:${tx};line-height:1.25;margin-bottom:8px;">${b.sample}</div>
+        <div style="display:inline-block;padding:6px 13px;background:${p};color:${tx};border-radius:4px;font-size:11px;font-weight:600;">Explore</div>
+       </div>` },
+  ];
+
+  return showcases.map(s => `
+    <div class="showcase-card">
+      <div class="showcase-preview" style="background:${s.bg};padding:${s.label==='Navigation'||s.label==='Hero section'?'0':'14px'};">${s.html}</div>
+      <div class="showcase-label">${s.label}</div>
+    </div>`).join('');
+}
+
+// ── MODE SELECTION ────────────────────────────────
 function selectMode(btn) {
   const wrap = btn.closest('.agent-wrap');
   wrap.querySelectorAll('.agent-mode-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
-  // Find the input in the same panel
   const input = wrap.querySelector('.agent-input');
-  if (input) {
-    input.placeholder = btn.dataset.hint || 'Describe what you need…';
-    input.focus();
-  }
+  if (input) { input.placeholder = btn.dataset.hint || 'Describe what you need...'; input.focus(); }
 }
 
-// Builds the system prompt from the client's DS data
-function buildSystemPrompt(c) {
+// ── SYSTEM PROMPT ─────────────────────────────────
+function buildSystemPrompt(c, mode) {
   const b = c.brand;
   const dsMode = b.dsStatus.startsWith('✅') ? 'live' : 'reference';
-  const tokenSummary = (b.tokens || [])
-    .map(t => `${t.n}: ${t.v}`)
-    .join(', ');
-  const colorSummary = (b.colors || [])
-    .map(col => `${col.n}: ${col.h}`)
-    .join(', ');
+  const tokenSummary = (b.tokens||[]).map(t=>`${t.n}: ${t.v}`).join(', ');
+  const colorSummary = (b.colors||[]).map(col=>`${col.n}: ${col.h}`).join(', ');
+  const primary = b.colors[0]?.h || '#333';
+  const bgCol = b.bg;
+  const txtCol = b.txt;
 
-  return `You are a senior product designer and creative technologist at Accenture Song.
-You are helping the Song NL & Nordics team with a client intelligence and prototyping task.
+  const protoRules = mode === 'prototype' ? `
+PROTOTYPE MODE — CRITICAL OUTPUT RULES:
+Output a complete self-contained HTML page. Nothing else. No markdown. No explanation. No backticks. No text before or after.
+Start directly with <!DOCTYPE html>.
+The page must:
+- Use exact brand colours: primary ${primary}, background ${bgCol}, text on dark backgrounds ${txtCol}
+- Use system fonts: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+- Look like a real polished product screen, not a wireframe
+- Have working CSS hover states
+- Use realistic copy, not Lorem Ipsum
+- Be fully self-contained with no external dependencies` : '';
 
-CLIENT: ${c.name}
-Country: ${c.country} | Sector: ${c.sector}
-Current Song engagement: ${(c.brand.engagements || []).join('; ')}
-Strategic insight: ${c.brand.insight || 'N/A'}
-
-DESIGN SYSTEM (${dsMode.toUpperCase()} MODE):
-${dsMode === 'live'
-  ? `Design tokens available: ${tokenSummary}`
-  : `Reference data only — not from official design system. Use with caution.`}
+  return `You are a senior product designer at Accenture Song working on ${c.name}.
+CLIENT: ${c.name} | ${c.country} | ${c.sector}
+Engagement: ${(b.engagements||[]).join('; ')}
+Insight: ${b.insight||'N/A'}
 Brand colours: ${colorSummary}
+Tokens: ${tokenSummary||'use brand colours above'}
 Display font: ${b.font}
 Body font: ${b.fontb}
-DS status: ${b.dsStatus}
-
-RULES:
-- Use only the token values listed above. Do not invent colours or hex codes.
-- Keep concepts practical for Song's current scope with this client.
-- If reference mode: always say "reference prototype — not based on official DS" in your output.
-- Format responses with clear section headers using markdown (### Header).
-- Be concise and actionable — teams should be able to act on your output immediately.
-- For code, use the exact token values provided above as CSS custom properties.`;
+DS: ${b.dsStatus}
+${protoRules}
+${dsMode==='reference'?'Reference mode: label outputs as reference prototype.':''}
+${mode!=='prototype'?'Format with ### headers. Be concise and actionable.':''}`;
 }
 
-// Formats the raw API text response into clean HTML
-function formatResponse(text) {
-  return text
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
-    .replace(/\n{2,}/g, '\n')
-    .trim();
+// ── HTML EXTRACTION ───────────────────────────────
+function extractHTML(text) {
+  const fence = text.match(/```html\s*([\s\S]*?)```/i) || text.match(/```\s*(<!DOCTYPE[\s\S]*?)```/i);
+  if (fence) return fence[1].trim();
+  if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) return text.trim();
+  const idx = text.indexOf('<!DOCTYPE');
+  if (idx !== -1) return text.slice(idx).trim();
+  return null;
 }
 
-// Main agent runner
-async function runAgent(clientId) {
-  const c = DATA.find(x => x.id === clientId);
-  if (!c) return;
+// ── SANDBOX RENDERER ──────────────────────────────
+const _sandboxHistory = {};
 
-  const input = document.getElementById(`agent-input-${clientId}`);
+function renderSandbox(clientId, html, brief) {
   const output = document.getElementById(`agent-output-${clientId}`);
-  const btn = document.getElementById(`agent-btn-${clientId}`);
-  const wrap = document.getElementById(`agent-wrap-${clientId}`);
+  if (!_sandboxHistory[clientId]) _sandboxHistory[clientId] = [];
+  _sandboxHistory[clientId].push({ brief, html });
 
-  const userText = input.value.trim();
-  if (!userText) {
-    input.focus();
+  const histItems = _sandboxHistory[clientId].length > 1
+    ? _sandboxHistory[clientId].map((h,i)=>
+        `<div class="sandbox-history-item" onclick="loadVersion('${clientId}',${i})">v${i+1} — ${h.brief.slice(0,48)}${h.brief.length>48?'...':''}</div>`
+      ).join('')
+    : '';
+
+  output.className = 'agent-output';
+  output.innerHTML = `
+    <div class="sandbox-wrap">
+      <div class="sandbox-toolbar">
+        <div class="sandbox-dot" style="background:#ff5f57;"></div>
+        <div class="sandbox-dot" style="background:#febc2e;"></div>
+        <div class="sandbox-dot" style="background:#28c840;"></div>
+        <div class="sandbox-url">${clientId}-prototype-v${_sandboxHistory[clientId].length}.html</div>
+        <button class="sandbox-open-btn" onclick="openFull('${clientId}')">Full screen</button>
+      </div>
+      <iframe id="frame-${clientId}" class="sandbox-frame"
+        srcdoc="${html.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+        sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+    <div class="sandbox-actions">
+      <input class="sandbox-iterate" id="iterate-${clientId}"
+        placeholder="Iterate: 'darker header', 'add a search bar', 'mobile version'..."
+        onkeydown="if(event.key==='Enter'){doIterate('${clientId}')}" />
+      <button class="sandbox-iterate-btn" onclick="doIterate('${clientId}')">Iterate</button>
+      <button class="sandbox-open-btn" onclick="copyHTML('${clientId}')">Copy HTML</button>
+    </div>
+    ${histItems ? `<div class="m-sec" style="margin-top:12px;margin-bottom:6px;">Versions</div><div class="sandbox-history">${histItems}</div>` : ''}
+  `;
+}
+
+function loadVersion(clientId, idx) {
+  const v = _sandboxHistory[clientId]?.[idx];
+  if (!v) return;
+  const f = document.getElementById(`frame-${clientId}`);
+  if (f) f.srcdoc = v.html;
+}
+
+function openFull(clientId) {
+  const h = _sandboxHistory[clientId];
+  if (!h?.length) return;
+  const blob = new Blob([h[h.length-1].html], {type:'text/html'});
+  window.open(URL.createObjectURL(blob), '_blank');
+}
+
+function copyHTML(clientId) {
+  const h = _sandboxHistory[clientId];
+  if (!h?.length) return;
+  navigator.clipboard.writeText(h[h.length-1].html).then(() => {
+    const btns = document.querySelectorAll(`#agent-output-${clientId} .sandbox-open-btn`);
+    btns.forEach(b => { if(b.textContent==='Copy HTML'){b.textContent='Copied'; setTimeout(()=>b.textContent='Copy HTML',2000); }});
+  });
+}
+
+// ── ITERATION ─────────────────────────────────────
+async function doIterate(clientId) {
+  const c = DATA.find(x=>x.id===clientId);
+  if (!c) return;
+  const iterInput = document.getElementById(`iterate-${clientId}`);
+  const instruction = iterInput?.value?.trim();
+  if (!instruction) return;
+  const h = _sandboxHistory[clientId];
+  if (!h?.length) return;
+  const currentHTML = h[h.length-1].html;
+  const btn = document.querySelector(`#agent-output-${clientId} .sandbox-iterate-btn`);
+  if (btn) { btn.disabled=true; btn.textContent='...'; }
+  try {
+    const text = await callSupabase(c, 'prototype',
+      `Here is the current prototype:\n\n${currentHTML}\n\nApply this change: ${instruction}\n\nReturn only the complete updated HTML. Nothing else.`
+    );
+    const newHTML = extractHTML(text) || text;
+    if (iterInput) iterInput.value = '';
+    renderSandbox(clientId, newHTML, instruction);
+  } catch(err) {
+    if (btn) { btn.disabled=false; btn.textContent='Iterate'; }
+  }
+}
+
+// ── AGENT NETWORK ─────────────────────────────────
+// Replace null with the other team's endpoint URL when ready
+const NETWORK_ENDPOINT = null;
+
+async function callNetworkAgent(clientId, agentType) {
+  const c = DATA.find(x=>x.id===clientId);
+  if (!c) return;
+  const statusEl = document.getElementById(`network-status-${clientId}`);
+  const output = document.getElementById(`agent-output-${clientId}`);
+  if (!NETWORK_ENDPOINT) {
+    output.className = 'agent-output';
+    output.innerHTML = `<div class="agent-result">
+      <h3>Agent network not connected yet</h3>
+      When the other team shares their endpoint, replace <code>null</code> with it on the NETWORK_ENDPOINT line in this file.<br><br>
+      ${c.name}'s context (sector, brand tokens, engagements, strategic insight) is ready to send the moment you have a URL.
+    </div>`;
     return;
   }
+  if (statusEl) statusEl.innerHTML = `<span class="network-dot-on"></span> Calling ${agentType}...`;
+  output.className = 'agent-output loading';
+  output.innerHTML = `<div class="agent-spinner">Routing to ${agentType} agent...</div>`;
+  try {
+    const res = await fetch(NETWORK_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        agent: agentType,
+        client: { name:c.name, sector:c.sector, country:c.country,
+          tokens:c.brand.tokens, colors:c.brand.colors,
+          engagements:c.brand.engagements, insight:c.brand.insight }
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.[0]?.text || data.result || data.output || JSON.stringify(data);
+    output.className = 'agent-output';
+    output.innerHTML = `<div class="agent-result">${formatResponse(text)}</div>`;
+    if (statusEl) statusEl.innerHTML = `<span class="network-dot-on"></span> ${agentType} responded`;
+  } catch(err) {
+    output.className = 'agent-output';
+    output.innerHTML = `<div class="agent-result"><h3>Network error</h3>${err.message}</div>`;
+    if (statusEl) statusEl.innerHTML = `<span class="network-dot-off"></span> Connection failed`;
+  }
+}
 
-  // Get active mode (if any)
-  const activeMode = wrap.querySelector('.agent-mode-btn.selected');
-  const mode = activeMode?.dataset.mode || 'freeform';
+// ── CORE API CALL ──────────────────────────────────
+async function callSupabase(c, mode, userText) {
+  const res = await fetch('https://fawzlvdyavbggfwjynpf.supabase.co/functions/v1/claude', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: mode === 'prototype' ? 4096 : 1024,
+      system: buildSystemPrompt(c, mode),
+      messages: [{role:'user', content:userText}],
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(()=>({}));
+    throw new Error(err.error?.message || `API error ${res.status}`);
+  }
+  const data = await res.json();
+  return data.content?.[0]?.text || '(no response)';
+}
 
-  // Build mode-specific user message
-  const modePrefix = {
-    concept:   `Generate a prototype concept for ${c.name}. Brief: `,
-    audit:     `Audit what design system components are needed and what's missing to build: `,
-    mvpflow:   `Create a step-by-step MVP user flow with screen names, components and copy for: `,
+// ── TEXT FORMATTER ────────────────────────────────
+function formatResponse(text) {
+  return text
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,'<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/^- (.+)$/gm,'<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g,m=>`<ul>${m}</ul>`)
+    .replace(/\n{2,}/g,'\n').trim();
+}
+
+// ── MAIN RUNNER ────────────────────────────────────
+async function runAgent(clientId) {
+  const c = DATA.find(x=>x.id===clientId);
+  if (!c) return;
+  const input  = document.getElementById(`agent-input-${clientId}`);
+  const output = document.getElementById(`agent-output-${clientId}`);
+  const btn    = document.getElementById(`agent-btn-${clientId}`);
+  const wrap   = document.getElementById(`agent-wrap-${clientId}`);
+  const userText = input.value.trim();
+  if (!userText) { input.focus(); return; }
+  const mode = wrap.querySelector('.agent-mode-btn.selected')?.dataset.mode || 'freeform';
+  const prefix = {
+    prototype: `Build a prototype screen for ${c.name}: `,
+    concept:   `Generate a prototype concept for ${c.name}: `,
+    audit:     `Audit what DS components are needed to build: `,
+    mvpflow:   `Create a step-by-step MVP user flow for: `,
     copywrite: `Write UI copy in ${c.name}'s tone of voice for: `,
     freeform:  '',
   };
-  const fullPrompt = (modePrefix[mode] || '') + userText;
-
-  // UI: loading state
-  btn.disabled = true;
-  btn.textContent = '…';
+  const fullPrompt = (prefix[mode]||'') + userText;
+  btn.disabled = true; btn.textContent = '...';
   output.className = 'agent-output loading';
-  output.innerHTML = '<div class="agent-spinner">Thinking…</div>';
-
-  // ── YOUR SUPABASE FUNCTION URL ───────────────────────────────────
-  // Replace fawzlvdyavbggfwjynpf with the Reference ID from:
-  // Supabase dashboard → Project Settings → General → Reference ID
-  const SUPABASE_URL = 'https://fawzlvdyavbggfwjynpf.supabase.co/functions/v1/claude';
-  // ─────────────────────────────────────────────────────────────────
-
+  output.innerHTML = mode === 'prototype'
+    ? '<div class="agent-spinner">Building prototype...</div>'
+    : '<div class="agent-spinner">Thinking...</div>';
   try {
-    const res = await fetch(SUPABASE_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
-        system: buildSystemPrompt(c),
-        messages: [{ role: 'user', content: fullPrompt }],
-      }),
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error?.message || `API error ${res.status}`);
+    const text = await callSupabase(c, mode, fullPrompt);
+    if (mode === 'prototype') {
+      const html = extractHTML(text);
+      if (html) { renderSandbox(clientId, html, userText); }
+      else {
+        output.className = 'agent-output';
+        output.innerHTML = `<div class="agent-result">${formatResponse(text)}</div><button class="agent-copy-btn" onclick="copyOut(this)">Copy</button>`;
+      }
+    } else {
+      output.className = 'agent-output';
+      output.innerHTML = `<div class="agent-result">${formatResponse(text)}</div><button class="agent-copy-btn" onclick="copyOut(this)">Copy</button>`;
     }
-
-    const data = await res.json();
-    const text = data.content?.[0]?.text || '(no response)';
-
+  } catch(err) {
     output.className = 'agent-output';
-    output.innerHTML = `
-      <div class="agent-result">${formatResponse(text)}</div>
-      <button class="agent-copy-btn" onclick="copyOutput(this)">Copy output</button>
-    `;
-
-  } catch (err) {
-    output.className = 'agent-output';
-    output.innerHTML = `
-      <div class="agent-result">
-        <h3>Not connected yet</h3>
-        Two things to check:<br><br>
-        <strong>1. Replace fawzlvdyavbggfwjynpf in the HTML</strong><br>
-        Open this file, find <code>SUPABASE_URL</code> near line 1035 and swap in your real Supabase project ID.<br><br>
-        <strong>2. Add your key to Supabase</strong><br>
-        Supabase dashboard → Project Settings → Edge Functions → Secrets<br>
-        Add secret: <code>ANTHROPIC_API_KEY</code> = your <code>sk-ant-...</code> key<br><br>
-        Error detail: ${err.message}
-      </div>
-    `;
+    output.innerHTML = `<div class="agent-result"><h3>Error</h3>
+      Check: Supabase Edge Function deployed, ANTHROPIC_API_KEY secret set, JWT verification off.<br><br>
+      ${err.message}</div>`;
   } finally {
-    btn.disabled = false;
-    btn.textContent = 'Run →';
+    btn.disabled = false; btn.textContent = 'Run';
   }
 }
 
-// Copy output text to clipboard
-function copyOutput(btn) {
-  const text = btn.previousElementSibling?.textContent || '';
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'Copied ✓';
-    setTimeout(() => { btn.textContent = 'Copy output'; }, 2000);
+function copyOut(btn) {
+  navigator.clipboard.writeText(btn.previousElementSibling?.textContent||'').then(()=>{
+    btn.textContent='Copied'; setTimeout(()=>btn.textContent='Copy',2000);
   });
 }
+
+// Opens a client modal directly on a specific tab index
+function openModalOnTab(clientId, tabIndex) {
+  openModal(clientId);
+  setTimeout(() => {
+    const tabs = document.querySelectorAll('.m-tab');
+    const panels = document.querySelectorAll('.m-panel');
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    if (tabs[tabIndex]) tabs[tabIndex].classList.add('active');
+    if (panels[tabIndex]) panels[tabIndex].classList.add('active');
+  }, 50);
+}
+
+let _socialClient = null;
+
+function initSocialClientBtns() {
+  const container = document.getElementById('social-client-btns');
+  if (!container) return;
+  DATA.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'fb';
+    btn.textContent = c.flag + ' ' + c.name;
+    btn.onclick = () => {
+      container.querySelectorAll('.fb').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      _socialClient = c;
+      document.getElementById('social-selected').textContent = c.name;
+      document.getElementById('social-selected').style.color = 'var(--t1)';
+    };
+    container.appendChild(btn);
+  });
+}
+
+async function fetchSocial() {
+  if (!_socialClient) {
+    document.getElementById('social-selected').textContent = 'Select a client first';
+    document.getElementById('social-selected').style.color = '#F07070';
+    return;
+  }
+  const c = _socialClient;
+  const focus = document.getElementById('social-focus').value.trim();
+  const btn = document.getElementById('social-fetch-btn');
+  const resultsDiv = document.getElementById('social-live-results');
+  const grid = document.getElementById('social-cards-grid');
+  const label = document.getElementById('social-live-label');
+  const timeEl = document.getElementById('social-fetch-time');
+
+  btn.disabled = true;
+  btn.textContent = 'Searching...';
+  resultsDiv.style.display = 'block';
+  label.textContent = 'Live results — ' + c.name;
+  grid.innerHTML = '<div style="grid-column:1/-1;padding:20px 0;"><div class="agent-spinner">Searching public social channels for ' + c.name + (focus ? ' · ' + focus : '') + '...</div></div>';
+
+  const primary = c.brand.colors[0]?.h || '#333';
+  const txtColor = c.brand.txt || '#fff';
+
+  const prompt = 'Search for the latest public social media activity from ' + c.name + ' (' + c.sector + ', ' + c.country + ').' +
+    (focus ? ' Focus on: ' + focus + '.' : ' Cover their main active channels.') +
+    ' Find their most recent public campaigns, posts or content across LinkedIn, Instagram, TikTok, or their website.' +
+    ' Return a JSON array of 3-5 items. Each item must have:' +
+    ' platform (string), handle (string), followers (string like "847K"), campaign (string, max 5 words),' +
+    ' post_text (string, 1-2 sentences of representative copy in their tone),' +
+    ' stats (array of 3 short strings like ["4.2K reactions","312 shares","LinkedIn video"]),' +
+    ' bg_color (hex, use ' + primary + '),' +
+    ' text_color (hex, use ' + txtColor + '),' +
+    ' initials (2-4 chars).' +
+    ' Return ONLY the JSON array. No explanation. No backticks.';
+
+  try {
+    const text = await callSupabase(c, 'freeform', prompt);
+    let items = [];
+    try {
+      const jsonMatch = text.match(/\[[\s\S]*\]/);
+      items = JSON.parse(jsonMatch ? jsonMatch[0] : text);
+    } catch(e) {
+      grid.innerHTML = '<div style="grid-column:1/-1;font-size:12px;color:var(--t2);padding:16px;">Could not parse results. Try again or check your Supabase connection.<br><br>' + text.slice(0,300) + '</div>';
+      return;
+    }
+    timeEl.textContent = 'Fetched ' + new Date().toLocaleTimeString();
+    grid.innerHTML = items.map(function(item) {
+      const stats = (item.stats||[]).map(function(s){ return '<span>' + s + '</span>'; }).join('');
+      return '<div class="social-card">' +
+        '<div class="social-header">' +
+          '<div class="social-avatar" style="background:' + item.bg_color + ';color:' + item.text_color + ';">' + item.initials + '</div>' +
+          '<div><div class="social-handle">' + item.handle + '</div>' +
+          '<div class="social-platform">' + item.platform + ' · ' + item.followers + ' followers</div></div>' +
+          '<div class="social-live"><div class="live-dot"></div>Live</div>' +
+        '</div>' +
+        '<div class="social-body">' +
+          '<div class="social-img" style="background:' + item.bg_color + ';color:' + item.text_color + ';">' + item.campaign + '</div>' +
+          '<div class="social-text">' + item.post_text + '</div>' +
+          '<div class="social-stats">' + stats + '</div>' +
+        '</div></div>';
+    }).join('');
+  } catch(err) {
+    grid.innerHTML = '<div style="grid-column:1/-1;font-size:12px;color:#F07070;padding:16px;">Error: ' + err.message + '</div>';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Fetch live ↗';
+  }
+}
+
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light');
+  document.getElementById('theme-icon').textContent = isLight ? '☾' : '☀';
+  document.getElementById('theme-label').textContent = isLight ? 'Dark' : 'Light';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+
+// Restore saved theme preference
+(function() {
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('theme-icon').textContent = '☾';
+    document.getElementById('theme-label').textContent = 'Dark';
+  }
+})();
 </script>
 </body>
 </html>
