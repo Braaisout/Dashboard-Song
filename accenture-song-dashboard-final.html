@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accenture Song — NL & Nordics Client Intelligence v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --p: #A100FF; --pd: #7B00C4; --pg: rgba(161,0,255,0.14);
+    --b: #000; --w: #FFF;
+    --s1: #111; --s2: #181818; --s3: #222; --s4: #2a2a2a;
+    --bd: rgba(255,255,255,0.08); --bdp: rgba(161,0,255,0.38);
+    --t1: #FFF; --t2: rgba(255,255,255,0.6); --t3: rgba(255,255,255,0.35);
+    --r: 4px; --rl: 8px; --rx: 12px; --tr: .17s ease;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--b); color: var(--t1); font-size: 14px; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.93); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--bd); padding: 0 28px; height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .nav-logo { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .acc-mark { width: 26px; height: 26px; background: var(--p); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .nav-tabs { display: flex; gap: 0; list-style: none; overflow-x: auto; scrollbar-width: none; }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .nav-tab { padding: 0 13px; height: 54px; display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--t2); cursor: pointer; border-bottom: 2px solid transparent; transition: color var(--tr), border-color var(--tr); user-select: none; white-space: nowrap; }
+  .nav-tab:hover { color: var(--t1); }
+  .nav-tab.active { color: var(--t1); border-bottom-color: var(--p); }
+  .nav-badge { background: var(--p); color: #fff; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 999px; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .hero { padding: 52px 28px 40px; border-bottom: 0.5px solid var(--bd); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -100px; width: 440px; height: 440px; background: radial-gradient(circle, rgba(161,0,255,0.11) 0%, transparent 70%); pointer-events: none; }
+  .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--p); margin-bottom: 12px; }
+  .htitle { font-size: clamp(28px, 4.5vw, 46px); font-weight: 700; letter-spacing: -.03em; line-height: 1.08; margin-bottom: 14px; }
+  .htitle span { color: var(--p); }
+  .hsub { font-size: 14px; color: var(--t2); max-width: 520px; line-height: 1.65; margin-bottom: 28px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 28px; }
+  .stat-v { font-size: 26px; font-weight: 700; letter-spacing: -.03em; }
+  .stat-v span { color: var(--p); }
+  .stat-l { font-size: 10px; text-transform: uppercase; letter-spacing: .07em; color: var(--t3); font-weight: 500; margin-top: 1px; }
+
+  .wrap { padding: 28px 28px 72px; }
+  .sec-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px; }
+  .sec-t { font-size: 10px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--t3); }
+  .sec-line { flex: 1; height: .5px; background: var(--bd); }
+  .mb24 { margin-bottom: 24px; }
+  .mb40 { margin-bottom: 40px; }
+
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
+  .fb { padding: 5px 13px; border-radius: 999px; border: .5px solid var(--bd); background: transparent; color: var(--t2); font-family: inherit; font-size: 12px; font-weight: 500; cursor: pointer; transition: all var(--tr); }
+  .fb:hover { border-color: rgba(255,255,255,.22); color: var(--t1); }
+  .fb.active { background: var(--p); border-color: var(--p); color: #fff; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 11px; }
+  .grid4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 11px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+
+  .card { background: var(--s1); border: .5px solid var(--bd); border-radius: var(--rl); padding: 18px 18px 16px; cursor: pointer; transition: border-color var(--tr), background var(--tr), transform var(--tr); position: relative; overflow: hidden; }
+  .card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--p); transform: scaleX(0); transform-origin: left; transition: transform var(--tr); }
+  .card:hover { border-color: var(--bdp); background: var(--s2); transform: translateY(-1px); }
+  .card:hover::after { transform: scaleX(1); }
+  .card-name { font-size: 14px; font-weight: 600; letter-spacing: -.015em; color: var(--t1); margin-bottom: 2px; }
+  .card-sub { font-size: 11px; color: var(--t3); font-weight: 500; margin-bottom: 8px; }
+  .card-desc { font-size: 12px; color: var(--t2); line-height: 1.52; margin-bottom: 11px; }
+  .cta { font-size: 11px; font-weight: 600; color: var(--p); display: flex; align-items: center; gap: 4px; }
+
+  .pill { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 10px; font-weight: 500; border: .5px solid; }
+  .pill-p { background: rgba(161,0,255,.1); color: #C966FF; border-color: rgba(161,0,255,.3); }
+  .pill-b { background: rgba(29,130,230,.1); color: #66AAEE; border-color: rgba(29,130,230,.3); }
+  .pill-t { background: rgba(29,158,117,.1); color: #5ECFAA; border-color: rgba(29,158,117,.3); }
+  .pill-a { background: rgba(239,159,39,.1); color: #F5C060; border-color: rgba(239,159,39,.3); }
+  .pill-g { background: rgba(255,255,255,.05); color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.12); }
+  .pill-r { background: rgba(226,75,74,.1); color: #F07070; border-color: rgba(226,75,74,.3); }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+
+  .sp { display: inline-flex; align-items: center; gap: 5px; padding: 2px 7px; border-radius: 999px; font-size: 10px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .sp-a { background: rgba(29,158,117,.14); color: #4ECBA0; border: .5px solid rgba(29,158,117,.28); }
+  .sp-n { background: rgba(239,159,39,.14); color: #F5B83A; border: .5px solid rgba(239,159,39,.28); }
+  .sp-e { background: rgba(226,75,74,.14); color: #F07070; border: .5px solid rgba(226,75,74,.28); }
+  .sp-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ── MODAL ── */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.87); backdrop-filter: blur(6px); align-items: flex-start; justify-content: center; padding: 32px 16px; overflow-y: auto; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: #111; border: .5px solid rgba(255,255,255,.11); border-radius: var(--rx); width: 100%; max-width: 860px; overflow: hidden; animation: min 0.2s ease; }
+  @keyframes min { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+  .modal-close { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; background: rgba(255,255,255,.08); border: none; border-radius: 50%; color: rgba(255,255,255,.7); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; z-index: 5; transition: background var(--tr); }
+  .modal-close:hover { background: rgba(255,255,255,.15); color: #fff; }
+  .m-brand { padding: 32px; position: relative; overflow: hidden; }
+  .m-brand::after { content: ''; position: absolute; inset: 0; opacity: .06; background-image: repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%); background-size: 11px 11px; pointer-events: none; }
+  .m-logo { width: 56px; height: 56px; border-radius: var(--rl); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; margin-bottom: 14px; position: relative; z-index: 2; }
+  .m-name { font-size: 26px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 3px; position: relative; z-index: 2; }
+  .m-tagline { font-size: 12px; opacity: .65; position: relative; z-index: 2; }
+
+  .m-tabs { display: flex; border-bottom: .5px solid rgba(255,255,255,.08); padding: 0 28px; }
+  .m-tab { padding: 12px 14px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,.5); cursor: pointer; border-bottom: 2px solid transparent; transition: all var(--tr); user-select: none; }
+  .m-tab:hover { color: #fff; }
+  .m-tab.active { color: #fff; border-bottom-color: var(--p); }
+  .m-panel { display: none; padding: 24px 28px 32px; }
+  .m-panel.active { display: block; }
+
+  .m-sec { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--t3); margin: 0 0 10px; }
+  .swatch-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .swatch { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .sw-block { width: 38px; height: 38px; border-radius: var(--r); border: .5px solid rgba(255,255,255,.1); }
+  .sw-label { font-size: 9px; color: var(--t3); font-weight: 500; text-align: center; line-height: 1.3; }
+  .font-demo { background: var(--s3); border-radius: var(--r); padding: 12px 14px; margin-bottom: 6px; }
+
+  .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .bullet-item { display: flex; gap: 9px; align-items: flex-start; }
+  .bullet-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--p); flex-shrink: 0; margin-top: 6px; }
+  .bullet-text { font-size: 12px; color: var(--t2); line-height: 1.52; }
+
+  .insight-box { background: rgba(161,0,255,.06); border: .5px solid rgba(161,0,255,.2); border-radius: var(--rl); padding: 14px 16px; margin-top: 18px; }
+  .insight-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--p); margin-bottom: 5px; }
+  .insight-text { font-size: 12px; color: var(--t2); line-height: 1.58; }
+
+  /* Social example cards */
+  .social-card { background: var(--s1); border: .5px solid var(--bd); border-radius: var(--rl); overflow: hidden; }
+  .social-header { padding: 12px 14px 10px; display: flex; align-items: center; gap: 9px; border-bottom: .5px solid var(--bd); }
+  .social-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .social-handle { font-size: 13px; font-weight: 600; }
+  .social-platform { font-size: 10px; color: var(--t3); }
+  .social-body { padding: 12px 14px; }
+  .social-img { width: 100%; aspect-ratio: 16/9; border-radius: var(--r); margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--t3); }
+  .social-text { font-size: 12px; color: var(--t2); line-height: 1.55; margin-bottom: 8px; }
+  .social-stats { display: flex; gap: 14px; font-size: 11px; color: var(--t3); }
+  .social-live { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; color: #4ECBA0; margin-left: auto; }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ECBA0; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  /* Prototype cards */
+  .proto-card { background: var(--s1); border: .5px solid var(--bd); border-radius: var(--rl); padding: 18px; }
+  .proto-status { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-bottom: 10px; }
+  .proto-concept { background: rgba(161,0,255,.12); color: #C966FF; border: .5px solid rgba(161,0,255,.28); }
+  .proto-ready { background: rgba(29,158,117,.12); color: #4ECBA0; border: .5px solid rgba(29,158,117,.28); }
+  .proto-preview { width: 100%; aspect-ratio: 16/8; border-radius: var(--r); margin-bottom: 12px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+
+  /* DS token display */
+  .token-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: .5px solid var(--bd); }
+  .token-row:last-child { border-bottom: none; }
+  .token-swatch { width: 28px; height: 28px; border-radius: var(--r); border: .5px solid rgba(255,255,255,.1); flex-shrink: 0; }
+  .token-name { font-size: 12px; font-weight: 500; font-family: 'Courier New', monospace; color: var(--p); flex: 1; min-width: 0; }
+  .token-val { font-size: 11px; color: var(--t2); }
+
+  /* Safe connection guide */
+  .step-card { background: var(--s1); border: .5px solid var(--bd); border-radius: var(--rl); padding: 16px 18px; display: flex; gap: 14px; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: rgba(161,0,255,.15); border: .5px solid rgba(161,0,255,.3); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--p); flex-shrink: 0; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .step-desc { font-size: 12px; color: var(--t2); line-height: 1.52; }
+  .step-code { background: var(--s3); border-radius: var(--r); padding: 6px 10px; font-size: 11px; font-family: 'Courier New', monospace; color: #C966FF; margin-top: 7px; display: block; }
+
+  .warn-box { background: rgba(226,75,74,.07); border: .5px solid rgba(226,75,74,.25); border-radius: var(--rl); padding: 13px 16px; display: flex; gap: 10px; }
+  .ok-box { background: rgba(29,158,117,.07); border: .5px solid rgba(29,158,117,.25); border-radius: var(--rl); padding: 13px 16px; display: flex; gap: 10px; }
+
+  ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #000; } ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  @media (max-width: 600px) { nav { padding: 0 14px; } .hero,.wrap { padding-left: 14px; padding-right: 14px; } .modal { border-radius: 0; } .m-brand,.m-panel { padding: 18px; } }
+
+  /* ── AGENT LAYER ── */
+  .agent-wrap { display: flex; flex-direction: column; gap: 14px; }
+  .agent-mode-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+  .agent-mode-btn { padding: 6px 14px; border-radius: 999px; border: .5px solid var(--bd); background: transparent; color: var(--t2); font-family: inherit; font-size: 12px; font-weight: 500; cursor: pointer; transition: all var(--tr); text-align: left; }
+  .agent-mode-btn:hover { border-color: rgba(161,0,255,.4); color: var(--p); }
+  .agent-mode-btn.selected { background: rgba(161,0,255,.15); border-color: rgba(161,0,255,.5); color: #C966FF; }
+  .agent-input-row { display: flex; gap: 8px; align-items: flex-end; }
+  .agent-input { flex: 1; background: var(--s3); border: .5px solid var(--bd); border-radius: var(--rl); padding: 10px 13px; font-family: inherit; font-size: 13px; color: var(--t1); resize: none; min-height: 52px; transition: border-color var(--tr); }
+  .agent-input:focus { outline: none; border-color: rgba(161,0,255,.5); }
+  .agent-input::placeholder { color: var(--t3); }
+  .agent-run-btn { height: 52px; padding: 0 18px; background: var(--p); border: none; border-radius: var(--rl); color: #fff; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: background var(--tr), transform var(--tr); white-space: nowrap; flex-shrink: 0; }
+  .agent-run-btn:hover { background: var(--pd); }
+  .agent-run-btn:active { transform: scale(.97); }
+  .agent-run-btn:disabled { background: var(--s3); color: var(--t3); cursor: not-allowed; transform: none; }
+  .agent-output { background: var(--s3); border: .5px solid var(--bd); border-radius: var(--rl); padding: 16px; min-height: 80px; }
+  .agent-output.loading { border-color: rgba(161,0,255,.3); }
+  .agent-placeholder { font-size: 12px; color: var(--t3); font-style: italic; }
+  .agent-result { font-size: 13px; color: var(--t2); line-height: 1.65; white-space: pre-wrap; }
+  .agent-result strong { color: var(--t1); font-weight: 600; }
+  .agent-result h3 { color: var(--p); font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin: 14px 0 6px; }
+  .agent-result h3:first-child { margin-top: 0; }
+  .agent-result ul { padding-left: 16px; margin: 4px 0 10px; }
+  .agent-result li { margin-bottom: 4px; }
+  .agent-result code { background: var(--s4); padding: 1px 5px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 11px; color: #C966FF; }
+  .agent-spinner { display: inline-flex; align-items: center; gap: 8px; color: var(--p); font-size: 12px; }
+  .agent-spinner::before { content: ''; width: 14px; height: 14px; border: 2px solid rgba(161,0,255,.3); border-top-color: var(--p); border-radius: 50%; animation: spin .7s linear infinite; flex-shrink: 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .agent-ds-banner { background: rgba(29,158,117,.07); border: .5px solid rgba(29,158,117,.2); border-radius: var(--r); padding: 7px 11px; font-size: 11px; color: #4ECBA0; margin-bottom: 12px; }
+  .agent-ref-banner { background: rgba(239,159,39,.07); border: .5px solid rgba(239,159,39,.2); border-radius: var(--r); padding: 7px 11px; font-size: 11px; color: #F5C060; margin-bottom: 12px; }
+  .agent-copy-btn { margin-top: 10px; padding: 5px 12px; border-radius: var(--r); border: .5px solid var(--bd); background: transparent; color: var(--t2); font-family: inherit; font-size: 11px; cursor: pointer; transition: all var(--tr); }
+  .agent-copy-btn:hover { border-color: rgba(255,255,255,.25); color: var(--t1); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="acc-mark">♪</div>
+    <span>Accenture Song</span>
+    <span style="color:var(--t3);font-weight:400;font-size:12px;">/ NL & Nordics</span>
+  </div>
+  <ul class="nav-tabs">
+    <li class="nav-tab active" onclick="showPage('overview',this)">Overview</li>
+    <li class="nav-tab" onclick="showPage('clients',this)">Clients <span class="nav-badge" id="cnt">16</span></li>
+    <li class="nav-tab" onclick="showPage('social',this)">Social</li>
+    <li class="nav-tab" onclick="showPage('prototypes',this)">Prototypes</li>
+    <li class="nav-tab" onclick="showPage('connect',this)">Connect data</li>
+  </ul>
+</nav>
+
+<!-- ══ OVERVIEW ══ -->
+<div id="page-overview" class="page active">
+  <div class="hero">
+    <div class="eyebrow">Client intelligence · Design & digital products</div>
+    <h1 class="htitle">Netherlands<br>&amp; <span>Nordics</span></h1>
+    <p class="hsub">Design systems, live social examples and prototype concepts — all connected to client brand data. Click any client to explore their full brand profile.</p>
+    <div class="stats">
+      <div><div class="stat-v">5</div><div class="stat-l">Markets</div></div>
+      <div><div class="stat-v"><span>6</span></div><div class="stat-l">Song studios</div></div>
+      <div><div class="stat-v">16</div><div class="stat-l">Clients</div></div>
+      <div><div class="stat-v"><span>B01LER</span></div><div class="stat-l">Song DS (open source)</div></div>
+      <div><div class="stat-v"><span>Skapa</span></div><div class="stat-l">IKEA DS (public npm)</div></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head mb24"><div class="sec-t">Design system status</div><div class="sec-line"></div></div>
+    <div class="grid4 mb40">
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:11px;font-weight:600;color:#4ECBA0;margin-bottom:6px;">IKEA Skapa ✓ Public</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;">72+ components · React Storybook · npm @ingka/button etc. · 200+ product teams · Noto Sans typeface · Blue #003399 / Yellow #FFDB00</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(161,0,255,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:11px;font-weight:600;color:#C966FF;margin-bottom:6px;">B01LER (Song) ✓ Open source</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;">Song's own design system · github.com/deven-org/boiler · MIT licence · Web components · Tokens Studio + Figma sync · Safe sandbox base</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(239,159,39,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:11px;font-weight:600;color:#F5C060;margin-bottom:6px;">Randstad Design ⚠ Gated</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;">randstad.design — robots-disallowed. Identity by Studio Dumbar/DEPT. Spezia typeface · Blue #0058A3. Request access via Song AOR relationship.</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(239,159,39,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:11px;font-weight:600;color:#F5C060;margin-bottom:6px;">ABN AMRO / NL DS ⚠ Partial</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;">NL Design System (nl-design-system/themes on GitHub) has ABN AMRO tokens. Bespoke ABN font. Green #00A050. Accessible by Song NL team.</div>
+      </div>
+    </div>
+
+    <div class="sec-head mb24"><div class="sec-t">Landmark engagements</div><div class="sec-line"></div></div>
+    <div class="grid2">
+      <div style="background:var(--s1);border:.5px solid var(--bdp);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--p);"></div>
+        <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:7px;">Global AOR · May 2024</div>
+        <div style="font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:5px;">Randstad NV</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;">GenAI-powered content engine · 39 markets · marketing transformation</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(255,215,0,.22);border-radius:var(--rl);padding:18px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#FFD700;"></div>
+        <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#FFD700;margin-bottom:7px;">Cannes Gold Lion · Nordic-led</div>
+        <div style="font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:5px;">IKEA CIRKULÄR</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;">Circular retail campaign · buy-back / refurbish / resell · behaviour design</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLIENTS ══ -->
+<div id="page-clients" class="page">
+  <div class="hero" style="padding-bottom:28px;">
+    <div class="eyebrow">All clients · click for brand profile</div>
+    <h1 class="htitle" style="font-size:32px;">Client roster</h1>
+    <p class="hsub" style="margin-bottom:0;">Design systems, social presence, engagement history and prototype opportunities — all in one profile.</p>
+  </div>
+  <div class="wrap">
+    <div class="filter-bar">
+      <button class="fb active" onclick="filterC('all',this)">All</button>
+      <button class="fb" onclick="filterC('NL',this)">🇳🇱 Netherlands</button>
+      <button class="fb" onclick="filterC('NO',this)">🇳🇴 Norway</button>
+      <button class="fb" onclick="filterC('SE',this)">🇸🇪 Sweden</button>
+      <button class="fb" onclick="filterC('DK',this)">🇩🇰 Denmark</button>
+      <button class="fb" onclick="filterC('FI',this)">🇫🇮 Finland</button>
+      <button class="fb" onclick="filterC('ds',this)">Has design system</button>
+    </div>
+    <div class="grid3" id="client-grid"></div>
+  </div>
+</div>
+
+<!-- ══ SOCIAL ══ -->
+<div id="page-social" class="page">
+  <div class="hero" style="padding-bottom:28px;">
+    <div class="eyebrow">Social intelligence</div>
+    <h1 class="htitle" style="font-size:32px;">Live examples</h1>
+    <p class="hsub" style="margin-bottom:0;">Representative examples of what each client is running socially — format, tone, engagement type — based on public campaigns. Not scraped live; updated manually or via API.</p>
+  </div>
+  <div class="wrap">
+    <div class="sec-head mb24"><div class="sec-t">Netherlands</div><div class="sec-line"></div></div>
+    <div class="grid3 mb40">
+
+      <div class="social-card">
+        <div class="social-header">
+          <div class="social-avatar" style="background:#0058A3;color:#fff;">R</div>
+          <div><div class="social-handle">Randstad Nederland</div><div class="social-platform">LinkedIn · 847K followers</div></div>
+          <div class="social-live"><div class="live-dot"></div>Active</div>
+        </div>
+        <div class="social-body">
+          <div class="social-img" style="background:#0058A3;color:#B5D4F4;">Employer Brand Campaign · 2024</div>
+          <div class="social-text">"Work is changing — and we're changing with it. Discover how Randstad helps talent find the work that works for them." #PartnerForTalent #WorkTrends</div>
+          <div class="social-stats"><span>↑ 4.2K reactions</span><span>312 shares</span><span>LinkedIn native video</span></div>
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-header">
+          <div class="social-avatar" style="background:#00A050;color:#fff;">AA</div>
+          <div><div class="social-handle">ABN AMRO</div><div class="social-platform">Instagram · 121K followers</div></div>
+          <div class="social-live"><div class="live-dot"></div>Active</div>
+        </div>
+        <div class="social-body">
+          <div class="social-img" style="background:#00A050;color:#C0DD97;">Sustainability Report · 2025</div>
+          <div class="social-text">Banking for a better planet starts with better choices. See how we're making our clients' sustainability ambitions real in 2025. 🌱</div>
+          <div class="social-stats"><span>↑ 890 likes</span><span>Carousel post</span><span>Always-on ESG</span></div>
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-header">
+          <div class="social-avatar" style="background:#00A1DE;color:#fff;">KLM</div>
+          <div><div class="social-handle">KLM Royal Dutch Airlines</div><div class="social-platform">Instagram · 2.1M followers</div></div>
+          <div class="social-live"><div class="live-dot"></div>Active</div>
+        </div>
+        <div class="social-body">
+          <div class="social-img" style="background:#003087;color:#85B7EB;">Journey Stories · UGC campaign</div>
+          <div class="social-text">From Amsterdam to anywhere. Your stories inspire us. Share your KLM journey with #MyKLMStory 💙✈️</div>
+          <div class="social-stats"><span>↑ 18.4K likes</span><span>UGC mechanic</span><span>Stories + Reels</span></div>
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-header">
+          <div class="social-avatar" style="background:#C9A96E;color:#1C1C1A;">R</div>
+          <div><div class="social-handle">Rituals Cosmetics</div><div class="social-platform">Instagram · 1.4M followers</div></div>
+          <div class="social-live"><div class="live-dot"></div>Active</div>
+        </div>
+        <div class="social-body">
+          <div class="social-img" style="background:#1C1C1A;color:#C9A96E;">Morning routine · Reels</div>
+          <div class="social-text">Start every morning as a ritual, not a routine. The Sakura collection — find stillness in the moment. 🌸</div>
+          <div class="social-stats"><span>↑ 31K likes</span><span>Reel · 2.8M views</span><span>Product lifestyle</span></div>
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-header">
+          <div class="social-avatar" style="background:#003366;color:#fff;">ALDI</div>
+          <div><div class="social-handle">ALDI Nord DE/NL</div><div class="social-platform">TikTok · 289K followers</div></div>
+          <div class="social-live"><div class="live-dot"></div>Active</div>
+        </div>
+        <div class="social-body">
+          <div class="social-img" style="background:#003366;color:#FF6600;">ALDI Patata · Viral campaign 2025</div>
+          <div class="social-text">"Patata!" 🥔 The fresh produce rap is back. Shout it out — Red Dot Award winner 2025. #Patata #ALDINord</div>
+          <div class="social-stats"><span>↑ 4.1M views</span><span>Viral TikTok</span><span>Song creative ✓</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sec-head mb24"><div class="sec-t">Nordics</div><div class="sec-line"></div></div>
+    <div class="grid3">
+
+      <div class="social-card">
+        <div class="social-header">
+          <div class="social-avatar" style="background:#003399;color:#FFDB00;">IKEA</div>
+          <div><div class="social-handle">IKEA Sverige / IKEA DK</div><div class="social-platform">Instagram · 3.2M global followers</div></div>
+          <div class="social-live"><div class="live-dot"></div>Active</div>
+        </div>
+        <div class="social-body">
+          <div class="social-img" style="background:#003399;color:#FFDB00;">CIRKULÄR · Cannes Gold Lion</div>
+          <div class="social-text">We bought your old furniture back. We refurbished it. Now it's on sale again. Circular shopping starts here. 🔄 #CIRKULÄR</div>
+          <div class="social-stats"><span>↑ 89K likes</span><span>Song creative ✓</span><span>Cannes 2022</span></div>
+        </div>
+      </div>
+
+      <div class="social-card">
+        <div class="social-header">
+          <div class="social-avatar" style="background:#003087;color:#fff;">TEL</div>
+          <div><div class="social-handle">Telenor Norge</div><div class="social-platform">LinkedIn · 71K followers</div></div>
+          <div class="social-live"><div class="live-dot"></div>Active</div>
+        </div>
+        <div class="social-body">
+          <div class="social-img" style="background:#003087;color:#85B7EB;">Cloud transformation · 2023–</div>
+          <div class="social-text">Building Norway's most modern telco — one cloud-native product at a time. How we're becoming a truly software-driven company. 📡</div>
+          <div class="social-stats"><span>↑ 1.2K reactions</span><span>Thought leadership</span><span>Accenture partner</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROTOTYPES ══ -->
+<div id="page-prototypes" class="page">
+  <div class="hero" style="padding-bottom:28px;">
+    <div class="eyebrow">Prototype concepts</div>
+    <h1 class="htitle" style="font-size:32px;">Project ideas</h1>
+    <p class="hsub" style="margin-bottom:0;">Potential projects Song could prototype using each client's own design system and tokens — pitched as value-add concepts or innovation sprints.</p>
+  </div>
+  <div class="wrap">
+    <div class="sec-head mb24"><div class="sec-t">Ready to prototype — design system available</div><div class="sec-line"></div></div>
+    <div class="grid3 mb40">
+
+      <div class="proto-card">
+        <div class="proto-status proto-ready">● Build-ready</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:5px;">IKEA — circular recommender</div>
+        <div class="proto-preview" style="background:#003399;">
+          <div style="text-align:center;color:#FFDB00;font-size:11px;font-weight:600;">IKEA Skapa tokens<br>React · npm @ingka/*</div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A CIRKULÄR-branded product finder that recommends second-hand IKEA items to replace what a customer is about to buy new. Uses Skapa component library.</div>
+        <div class="pill-row"><span class="pill pill-t">Skapa tokens</span><span class="pill pill-b">React</span><span class="pill pill-p">AI recommendation</span></div>
+        <div class="cta">Prototype this ↗</div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-status proto-ready">● Build-ready</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:5px;">IKEA — room scan to list</div>
+        <div class="proto-preview" style="background:#003399;">
+          <div style="text-align:center;color:#FFDB00;font-size:11px;font-weight:600;">Skapa + Generative AI<br>Mobile-first</div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">Upload a photo of your room → AI identifies IKEA products already there → generates a shopping list for the missing pieces. Built on Skapa's mobile component set.</div>
+        <div class="pill-row"><span class="pill pill-t">Vision AI</span><span class="pill pill-b">Mobile</span><span class="pill pill-t">Skapa tokens</span></div>
+        <div class="cta">Prototype this ↗</div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-status proto-concept">◆ Concept stage</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:5px;">Randstad — AI job match</div>
+        <div class="proto-preview" style="background:#0058A3;">
+          <div style="text-align:center;color:#B5D4F4;font-size:11px;font-weight:600;">Randstad Spezia · Blue #0058A3<br>Needs DS access</div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A conversational job matching interface using Randstad's AI capabilities — aligned with the GenAI content engine Song is already building. Randstad's design system access needed.</div>
+        <div class="pill-row"><span class="pill pill-p">Conversational AI</span><span class="pill pill-a">Needs DS access</span></div>
+        <div class="cta">Request via AOR contact ↗</div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-status proto-ready">● B01LER base</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:5px;">KLM — personalised travel brief</div>
+        <div class="proto-preview" style="background:#003087;">
+          <div style="text-align:center;color:#85B7EB;font-size:11px;font-weight:600;">B01LER + KLM tokens<br>Token override approach</div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A pre-trip personalised digital brief — local weather, things to do, gate info, carbon offset — in KLM brand styling using B01LER as the base DS with KLM token overrides.</div>
+        <div class="pill-row"><span class="pill pill-p">B01LER base</span><span class="pill pill-b">Travel UX</span><span class="pill pill-t">Personalisation</span></div>
+        <div class="cta">Prototype this ↗</div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-status proto-concept">◆ Concept stage</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:5px;">ABN AMRO — sustainability tracker</div>
+        <div class="proto-preview" style="background:#00A050;">
+          <div style="text-align:center;color:#C0DD97;font-size:11px;font-weight:600;">NL Design System · ABN tokens<br>github.com/nl-design-system</div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A personal finance carbon footprint tracker integrated into ABN AMRO's banking app — using NL Design System tokens which include ABN AMRO theming.</div>
+        <div class="pill-row"><span class="pill pill-t">NL DS tokens</span><span class="pill pill-b">FinTech</span><span class="pill pill-p">ESG</span></div>
+        <div class="cta">Explore NL DS tokens ↗</div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-status proto-concept">◆ Concept stage</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:5px;">Rituals — ritual builder AI</div>
+        <div class="proto-preview" style="background:#1C1C1A;">
+          <div style="text-align:center;color:#C9A96E;font-size:11px;font-weight:600;">Rituals brand tokens<br>Charcoal · Gold · Parchment</div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.52;margin-bottom:10px;">A personalised morning/evening ritual builder — AI recommends products based on your lifestyle, mood and season. B01LER base with Rituals brand token overrides.</div>
+        <div class="pill-row"><span class="pill pill-p">AI personalisation</span><span class="pill pill-a">Beauty</span><span class="pill pill-g">B01LER base</span></div>
+        <div class="cta">Prototype with B01LER ↗</div>
+      </div>
+
+    </div>
+
+    <div class="sec-head mb24"><div class="sec-t">How to run a prototype sprint</div><div class="sec-line"></div></div>
+    <div class="grid2">
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:18px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Using IKEA Skapa (open now)</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:8px;">Skapa components are on npm and fully public. Install them, apply the tokens, and you're building a prototype that looks 100% like IKEA's product.</div>
+        <code style="display:block;background:var(--s3);padding:8px 10px;border-radius:var(--r);font-size:11px;color:#C966FF;margin-bottom:6px;">npm install @ingka/button @ingka/text</code>
+        <code style="display:block;background:var(--s3);padding:8px 10px;border-radius:var(--r);font-size:11px;color:#C966FF;">npx ux-ingka spark "circular recommender"</code>
+      </div>
+      <div style="background:var(--s1);border:.5px solid var(--bd);border-radius:var(--rl);padding:18px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Using B01LER for any other client</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.55;margin-bottom:8px;">Fork Song's own open-source B01LER design system, apply the client's brand tokens (colours, typography, spacing), and prototype quickly without needing access to the client's own DS.</div>
+        <code style="display:block;background:var(--s3);padding:8px 10px;border-radius:var(--r);font-size:11px;color:#C966FF;margin-bottom:6px;">git clone github.com/deven-org/boiler</code>
+        <code style="display:block;background:var(--s3);padding:8px 10px;border-radius:var(--r);font-size:11px;color:#C966FF;">tokens/brand.json → swap colors + fonts</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONNECT DATA ══ -->
+<div id="page-connect" class="page">
+  <div class="hero" style="padding-bottom:28px;">
+    <div class="eyebrow">Data connections · safety guide</div>
+    <h1 class="htitle" style="font-size:32px;">Where to get <span>more data</span></h1>
+    <p class="hsub" style="margin-bottom:0;">Open data sources you can use right now, gated sources you can request access to, and how to connect any of them safely and compliantly.</p>
+  </div>
+  <div class="wrap">
+
+    <div class="sec-head mb24"><div class="sec-t">Open sources — use now</div><div class="sec-line"></div></div>
+    <div class="grid3 mb40">
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#4ECBA0;margin-bottom:5px;">IKEA Skapa · npm public</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:7px;">72+ components, design tokens, 700+ icons, React / Vue / Web Components, iOS, Android. Fully open.</div>
+        <code style="font-size:10px;color:#C966FF;background:var(--s3);padding:4px 8px;border-radius:var(--r);display:block;">npm i @ingka/button</code>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#4ECBA0;margin-bottom:5px;">B01LER (Accenture Song) · MIT</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:7px;">Song's own tokenised DS boilerplate. Fork, apply brand tokens, prototype. Figma + GitHub sync built in.</div>
+        <code style="font-size:10px;color:#C966FF;background:var(--s3);padding:4px 8px;border-radius:var(--r);display:block;">github.com/deven-org/boiler</code>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#4ECBA0;margin-bottom:5px;">NL Design System · GitHub</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:7px;">ABN AMRO, Utrecht, Amsterdam city, and more — all have public token sets following NL DS architecture.</div>
+        <code style="font-size:10px;color:#C966FF;background:var(--s3);padding:4px 8px;border-radius:var(--r);display:block;">github.com/nl-design-system/themes</code>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#4ECBA0;margin-bottom:5px;">Brand style guides archive</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:7px;">2,000+ brand manuals including NL and Nordic brands going back decades. Free to browse.</div>
+        <code style="font-size:10px;color:#C966FF;background:var(--s3);padding:4px 8px;border-radius:var(--r);display:block;">brandingstyleguides.com</code>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#4ECBA0;margin-bottom:5px;">LinkedIn public profiles + posts</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:7px;">Company pages are publicly visible. Campaign examples, tone-of-voice, posting cadence — all readable manually or via browser automation for research.</div>
+        <code style="font-size:10px;color:#C966FF;background:var(--s3);padding:4px 8px;border-radius:var(--r);display:block;">Manual research · no API needed</code>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(29,158,117,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#4ECBA0;margin-bottom:5px;">Accenture AI Refinery SDK</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;margin-bottom:7px;">Accenture's public GitHub includes the AI Refinery SDK and 12 industry agent templates — directly relevant for client prototyping.</div>
+        <code style="font-size:10px;color:#C966FF;background:var(--s3);padding:4px 8px;border-radius:var(--r);display:block;">github.com/Accenture/airefinery-sdk</code>
+      </div>
+    </div>
+
+    <div class="sec-head mb24"><div class="sec-t">Gated sources — request access</div><div class="sec-line"></div></div>
+    <div class="grid3 mb40">
+      <div style="background:var(--s1);border:.5px solid rgba(239,159,39,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#F5C060;margin-bottom:5px;">Randstad brand portal · Via AOR</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;">brandportal.randstad.com — gated. Song is global AOR so access should be requestable via the account team. Read-only token access is the goal.</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(239,159,39,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#F5C060;margin-bottom:5px;">Figma API · Per client</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;">If clients share Figma files with Song, the Figma REST API can extract design tokens, component names and asset references programmatically. Read-only token only.</div>
+      </div>
+      <div style="background:var(--s1);border:.5px solid rgba(239,159,39,.3);border-radius:var(--rl);padding:16px;">
+        <div style="font-size:12px;font-weight:600;color:#F5C060;margin-bottom:5px;">Meta / LinkedIn APIs · Limited</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.5;">Meta Graph API and LinkedIn Marketing API require app review and client-granted access. Useful for post performance data with explicit client consent.</div>
+      </div>
+    </div>
+
+    <div class="sec-head mb24"><div class="sec-t">How to connect safely — step by step</div><div class="sec-line"></div></div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Start with open sources only — no credentials needed</div>
+          <div class="step-desc">For IKEA Skapa, B01LER, and NL Design System: clone the GitHub repo or install from npm. No API keys, no client permission required. This is your prototype sandbox.</div>
+          <code class="step-code">npm install @ingka/button @ingka/text @ingka/focus</code>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Use Claude Code to wire agents to these sources</div>
+          <div class="step-desc">Claude Code (claude.ai/code) can read GitHub repos, fetch npm package docs, and generate prototype UIs using the real token values — all locally on your machine.</div>
+          <code class="step-code">claude "read the IKEA Skapa tokens and build a circular product card"</code>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">For gated sources: read-only API keys only, stored in .env</div>
+          <div class="step-desc">Never paste client API keys into Claude chat directly. Store them in a local .env file and reference them in Claude Code. The key never leaves your machine.</div>
+          <code class="step-code">FIGMA_TOKEN=xxx → .env → gitignore this file always</code>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">No client PII or confidential data in prompts</div>
+          <div class="step-desc">When asking Claude to help with client work: use anonymised data, reference design tokens (not client files), and confirm with Accenture's data handling policy before using any real client assets in AI tools.</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">Internal use only until client-approved</div>
+          <div class="step-desc">Any prototype using client brand tokens or assets is for internal ideation only — do not publish or share outside Accenture without explicit client sign-off. Use Netlify/GitHub with access controls.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-head mb24"><div class="sec-t">MCP connectors for this dashboard</div><div class="sec-line"></div></div>
+    <div class="grid2 mb24">
+      <div class="ok-box">
+        <span style="font-size:18px;flex-shrink:0;">✓</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px;">What works today</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.5;">GitHub MCP → fetch design tokens from public repos. Web search MCP → pull live social post data. Claude Code → generate prototype UIs from token values. Netlify → instant shareable URL.</div>
+        </div>
+      </div>
+      <div class="warn-box">
+        <span style="font-size:18px;flex-shrink:0;">⚠</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px;">What needs setup</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.5;">Figma MCP (client Figma access needed). Social MCPs (Meta / LinkedIn app review). Client CRM/brand portal connections (Accenture security sign-off first).</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MODAL ══ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeOnBg(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div class="m-brand" id="m-brand"></div>
+    <div class="m-tabs" id="m-tabs"></div>
+    <div id="m-panels"></div>
+  </div>
+</div>
+
+<script>
+const DATA = [
+  { id:'randstad', name:'Randstad NV', country:'NL', flag:'🇳🇱', status:'new', sector:'HR / Staffing', ds:true,
+    tagline:"The world's most equitable and specialized talent company",
+    desc:'Global AOR since May 2024. GenAI-powered content at scale, marketing transformation, brand repositioning across 39 markets.',
+    tags:[['pill-p','GenAI content'],['pill-t','Global AOR'],['pill-b','Brand strategy']],
+    brand:{ bg:'#0D1B35', txt:'#FFFFFF', logobg:'#0058A3', logotxt:'R',
+      colors:[{h:'#0058A3',n:'Randstad Blue'},{h:'#FFFFFF',n:'White'},{h:'#F5F5F5',n:'Off-white'},{h:'#333333',n:'Dark'}],
+      font:'Spezia (custom humanist sans) — confident, warm. Display weight for hero copy.',
+      fontb:'Inter / system-ui — body and UI copy',
+      sample:'We connect people to jobs.',
+      dsStatus:'🔒 Gated — brandportal.randstad.com. Request via AOR account team.',
+      dsLink:'brandportal.randstad.com',
+      tokens:[{c:'#0058A3',n:'--color-primary',v:'#0058A3'},{c:'#004A8F',n:'--color-primary-dark',v:'#004A8F'},{c:'#FFFFFF',n:'--color-bg',v:'#FFFFFF'}],
+      social:['LinkedIn-first strategy — 847K NL followers','Long-form thought leadership + employer brand','#PartnerForTalent campaign · GenAI content sprint 2024','Short-form video increasing in 2025','Regional markets have own accounts + localised content'],
+      engagements:['Global creative & content AOR (May 2024)','GenAI content production engine — scale + speed','Brand repositioning: "partner for talent" strategy','Consistent identity rollout across 39 markets','Marketing function transformation'],
+      insight:"Randstad's Amsterdam HQ makes this Song's most strategic NL anchor. The GenAI content model is replicable for Heineken, AkzoNobel, Wolters Kluwer and other Dutch multinationals.",
+      protos:['Conversational AI job match UI (B01LER + Randstad tokens)','GenAI content brief generator for local market teams','Employer brand campaign planner with AI copy generation']
+    }
+  },
+  { id:'ikea', name:'IKEA', country:'SE', flag:'🇸🇪', status:'active', sector:'Retail / Home', ds:true,
+    tagline:'Creating a better everyday life for the many people',
+    desc:'Work & Co is IKEA\'s global digital product AOR. Nordic CCO Adam Kerj leads CIRKULÄR (Cannes Gold Lion). Skapa design system is fully public.',
+    tags:[['pill-t','Digital AOR'],['pill-b','Skapa DS public'],['pill-p','Commerce']],
+    brand:{ bg:'#002080', txt:'#FFDB00', logobg:'#003399', logotxt:'IKEA',
+      colors:[{h:'#003399',n:'IKEA Blue'},{h:'#FFDB00',n:'IKEA Yellow'},{h:'#FFFFFF',n:'White'},{h:'#F5F5DC',n:'Beige'}],
+      font:'Noto Sans (global) — replaced Verdana 2019. Supports 100+ languages. Democratic, accessible.',
+      fontb:'Noto Sans Regular — all digital UI and marketing copy.',
+      sample:'The wonderful everyday.',
+      dsStatus:'✅ Public npm — @ingka/* packages · 72+ components · Storybook live',
+      dsLink:'github.com/ingka-group-digital',
+      tokens:[{c:'#003399',n:'--color-interactive-emphasised-bg',v:'#003399'},{c:'#FFDB00',n:'--colour-static-yellow',v:'#FFDB00'},{c:'#111111',n:'--colour-text',v:'#111111'}],
+      social:['Instagram: 3.2M followers globally — lifestyle + product stories','CIRKULÄR campaign: 89K likes, Cannes Gold Lion 2022','TikTok growing — how-to assembly, room transformation','Sustainability content dominating Nordic accounts 2024–2025','IKEA DK / SE accounts run separate Nordic-relevant content'],
+      engagements:['Digital product AOR (Work & Co)','Work & Co first EU office in Copenhagen for IKEA','CIRKULÄR circular retail campaign — Cannes Gold Lion','E-commerce platform + digital product development','Skapa: single source of truth for all digital products'],
+      insight:"IKEA's Skapa is the most accessible design system in this portfolio — fully public on npm, with 72 components and 700+ icons. Any Song team can prototype IKEA-native products today without any client access.",
+      protos:['CIRKULÄR recommender (Skapa tokens + AI)','Room scan → IKEA shopping list (Vision AI + Skapa mobile)','Circular trade-in calculator (Skapa + sustainability tokens)']
+    }
+  },
+  { id:'abn', name:'ABN AMRO', country:'NL', flag:'🇳🇱', status:'active', sector:'Financial services', ds:true,
+    tagline:'Banking for better, for generations to come',
+    desc:'Inherited via Storm Digital (2019). Digital CX, programmatic media, audience analytics. ABN tokens available via NL Design System on GitHub.',
+    tags:[['pill-b','Financial services'],['pill-t','Digital CX'],['pill-p','NL DS tokens public']],
+    brand:{ bg:'#004A2A', txt:'#FFFFFF', logobg:'#00A050', logotxt:'AA',
+      colors:[{h:'#00A050',n:'ABN Green'},{h:'#FFD100',n:'ABN Yellow'},{h:'#FFFFFF',n:'White'},{h:'#004020',n:'Deep green'}],
+      font:'ABN AMRO Font (bespoke) — humanist sans, Dutch character. Strong retail banking presence.',
+      fontb:'Source Sans Pro — clean digital legibility for product UI.',
+      sample:'Banking that makes a difference.',
+      dsStatus:'⚡ Partial public — NL Design System has ABN AMRO theme tokens (github.com/nl-design-system)',
+      dsLink:'github.com/nl-design-system/themes',
+      tokens:[{c:'#00A050',n:'--abnamro-color-green',v:'#00A050'},{c:'#FFD100',n:'--abnamro-color-yellow',v:'#FFD100'},{c:'#004020',n:'--abnamro-color-green-dark',v:'#004020'}],
+      social:['LinkedIn: 1.1M NL followers — professional + ESG focus','Instagram: sustainability stories, community banking','#BankingForBetter always-on ESG content thread','Heavy carousel use for financial literacy content','Joint campaigns with Transavia (Tikkie partnership)'],
+      engagements:['Digital CX design (Storm Digital heritage)','Programmatic advertising + audience analytics','Search, social + data-driven media planning','Content creation + dynamic creative','Digital business services across financial products'],
+      insight:'ABN AMRO relationship via Storm Digital gives Song NL a strong financial services anchor. The NL Design System tokens are publicly accessible — Song can prototype ABN-native experiences without needing direct DS access.',
+      protos:['Personal carbon footprint tracker (NL DS ABN tokens)','Financial literacy chatbot (ABN brand)','Real-time sustainability dashboard for SME banking customers']
+    }
+  },
+  { id:'klm', name:'KLM Royal Dutch Airlines', country:'NL', flag:'🇳🇱', status:'active', sector:'Travel',
+    tagline:'The reliable, efficient, innovative Dutch airline',
+    desc:'Digital marketing, content and experience activation. Storm Digital heritage. Social-first with UGC mechanic (#MyKLMStory).',
+    tags:[['pill-b','Travel'],['pill-t','Digital marketing'],['pill-a','UGC campaigns']],
+    brand:{ bg:'#001A5C', txt:'#FFFFFF', logobg:'#003087', logotxt:'KLM',
+      colors:[{h:'#00A1DE',n:'KLM Light Blue'},{h:'#003087',n:'KLM Dark Blue'},{h:'#FFFFFF',n:'White'},{h:'#F0F0F0',n:'Light gray'}],
+      font:'United Sans (proprietary rounded geometric) — friendly, modern aviation.',
+      fontb:'United Sans Regular — digital comms and app UI.',
+      sample:'We fly. You soar.',
+      dsStatus:'🔒 Proprietary — no public access. Use B01LER + KLM token overrides to prototype.',
+      dsLink:'',
+      tokens:[{c:'#00A1DE',n:'--klm-blue-light',v:'#00A1DE'},{c:'#003087',n:'--klm-blue-dark',v:'#003087'},{c:'#FFFFFF',n:'--klm-white',v:'#FFFFFF'}],
+      social:['Instagram: 2.1M followers — lifestyle travel, UGC','#MyKLMStory UGC mechanic driving high organic reach','Stories + Reels dominating engagement 2024–2025','LinkedIn: B2B aviation + sustainability thought leadership','Seasonal campaigns: tulips, Dutch heritage, sustainability'],
+      engagements:['Digital marketing + content production','Search + social media advertising','Audience analytics + segmentation','Programmatic media planning','Dynamic creative for seasonal campaigns'],
+      insight:'KLM has a highly digital-literate in-house team. Song\'s role is primarily paid media amplification. The biggest opportunity is expanding into experience design as KLM modernises its app and pre-/post-flight digital touchpoints.',
+      protos:['Personalised pre-trip digital brief (B01LER + KLM tokens)','Sustainability carbon offset visualiser (KLM brand)','Airport wayfinding digital companion app']
+    }
+  },
+  { id:'rituals', name:'Rituals Cosmetics', country:'NL', flag:'🇳🇱', status:'active', sector:'Beauty / Retail',
+    tagline:'Slow down and be present. Find meaning in everyday routines.',
+    desc:'Amsterdam-born luxury beauty. Digital experience and analytics via Storm Digital. B01LER + Rituals tokens is the prototype approach.',
+    tags:[['pill-t','CX design'],['pill-b','Analytics'],['pill-p','Luxury retail']],
+    brand:{ bg:'#0F0F0D', txt:'#E8D5B7', logobg:'#C9A96E', logotxt:'R',
+      colors:[{h:'#1C1C1A',n:'Deep charcoal'},{h:'#C9A96E',n:'Warm gold'},{h:'#E8D5B7',n:'Parchment'},{h:'#5C4A32',n:'Earth brown'}],
+      font:'Garamond / Cormorant — classical serif for warmth and luxury. Display headlines only.',
+      fontb:'Helvetica Neue Light — minimal, modern contrast to the serif for body copy.',
+      sample:'Transform everyday routines into rituals.',
+      dsStatus:'🔒 Proprietary. No public DS. Use B01LER as base + apply Rituals tokens (charcoal, gold, parchment).',
+      dsLink:'',
+      tokens:[{c:'#1C1C1A',n:'--rituals-charcoal',v:'#1C1C1A'},{c:'#C9A96E',n:'--rituals-gold',v:'#C9A96E'},{c:'#E8D5B7',n:'--rituals-parchment',v:'#E8D5B7'}],
+      social:['Instagram: 1.4M — lifestyle, Reels dominant','Reels performing 3-4x over static posts in 2024–2025','Morning/evening ritual routines — high save rate','Sakura, Karma, Ayurveda collections drive seasonal spikes','TikTok growing: "ritual starter pack", GRWM format'],
+      engagements:['Digital CX strategy','Audience analytics + segmentation','Digital media planning for beauty','Content + social activation','CRM and loyalty digital support'],
+      insight:'Rituals is aggressively expanding into Asia and the US. Song\'s global footprint is a direct asset for multi-market digital rollout. B01LER + Rituals tokens can produce a prototype in days.',
+      protos:['AI ritual builder (morning/evening routine personalisation)','Seasonal ritual guide with product recommendations','Virtual try-before-you-buy experience for new collections']
+    }
+  },
+  { id:'aldi', name:'ALDI Nord', country:'NL', flag:'🇳🇱', status:'active', sector:'Retail',
+    tagline:'Fresher. Smarter. Simpler.',
+    desc:'SAP S/4HANA cloud rollout (Accenture-led). Song handles creative — ALDI Nord x Alexander Marcus "Patata" won Red Dot 2025.',
+    tags:[['pill-t','Tech transformation'],['pill-a','Red Dot 2025'],['pill-g','Retail']],
+    brand:{ bg:'#001A3D', txt:'#FFFFFF', logobg:'#003366', logotxt:'ALDI',
+      colors:[{h:'#003366',n:'ALDI Blue'},{h:'#FF6600',n:'ALDI Orange'},{h:'#FFFFFF',n:'White'},{h:'#F2F2F2',n:'Light gray'}],
+      font:'ALDI Own (custom sans) — bold, functional, no-nonsense retail.',
+      fontb:'Arial / Helvetica — accessible, universal retail voice.',
+      sample:'Good food. Better value.',
+      dsStatus:'🔒 Proprietary. Patata campaign was TikTok-native. Use B01LER + ALDI tokens for prototyping.',
+      dsLink:'',
+      tokens:[{c:'#003366',n:'--aldi-blue',v:'#003366'},{c:'#FF6600',n:'--aldi-orange',v:'#FF6600'},{c:'#FFFFFF',n:'--aldi-white',v:'#FFFFFF'}],
+      social:['TikTok: 289K NL followers — viral-first strategy','Patata campaign: 4.1M views · Red Dot Award winner 2025','Gen Z targeting: rap, meme formats, participatory mechanics','Low-price messaging + fresh produce positioning','Joint SAP tech content on LinkedIn (Accenture partnership)'],
+      engagements:['SAP S/4HANA cloud rollout — NL pilot region','ALDI Nord x Alexander Marcus "Patata" — Red Dot 2025','Social campaign: viral fresh produce rap on TikTok','Digital commerce + supply chain optimisation','IT transformation: merchandise management system'],
+      insight:'"Patata" is Song NL\'s most visible recent creative win. The dual engagement (tech + campaign) is the strongest proof of Song\'s integrated model. ALDI\'s e-commerce ambitions are growing — digital product opportunity ahead.',
+      protos:['Fresh produce freshness tracker (ALDI brand)','Circular packaging pledging mechanic (sustainability)','Smart shopping list with ALDI price comparison']
+    }
+  },
+  { id:'telenor', name:'Telenor Norway', country:'NO', flag:'🇳🇴', status:'active', sector:'Telecommunications',
+    tagline:"Norway's largest provider of telecommunications and digital services",
+    desc:'Cloud transformation (selected 2023). Becoming software & product-driven. IT modernisation ongoing. Major ongoing Accenture engagement.',
+    tags:[['pill-b','Telco'],['pill-t','Cloud transformation'],['pill-p','Digital product']],
+    brand:{ bg:'#001A5C', txt:'#FFFFFF', logobg:'#003087', logotxt:'TEL',
+      colors:[{h:'#003087',n:'Telenor Blue'},{h:'#FF0000',n:'Signal Red'},{h:'#FFFFFF',n:'White'},{h:'#F2F2F2',n:'Light'}],
+      font:'Telenor Text (custom geometric) — Nordic precision, digital-first.',
+      fontb:'Telenor Text — consistent all digital touchpoints.',
+      sample:'Connecting you to what matters.',
+      dsStatus:'🔒 Proprietary. No public access. Use B01LER + Telenor tokens for prototyping concepts.',
+      dsLink:'',
+      tokens:[{c:'#003087',n:'--telenor-blue',v:'#003087'},{c:'#FF0000',n:'--telenor-red',v:'#FF0000'},{c:'#FFFFFF',n:'--telenor-white',v:'#FFFFFF'}],
+      social:['LinkedIn: 71K followers — tech + cloud transformation','B2B thought leadership on AI + telecoms innovation','Customer-facing Instagram + Facebook for consumer products','#DigitalNorway sustainability and connectivity content','Joint PR with Accenture on cloud milestone news'],
+      engagements:['Cloud IT org transformation (Feb 2023, ongoing)','Transition to software & product-driven operating model','Customer experience improvement through cloud agility','Speed-to-market acceleration for service offerings','Digital product development capability build'],
+      insight:'Telenor Norway (~NOK 14B revenue) is a beachhead engagement. As cloud transformation delivers, Song\'s product design team can expand into consumer app UX and digital service design.',
+      protos:['5G digital life visualiser (B01LER + Telenor tokens)','Customer onboarding redesign prototype','Self-service network diagnostics app concept']
+    }
+  },
+  { id:'ikea-dk', name:'IKEA Denmark', country:'DK', flag:'🇩🇰', status:'active', sector:'Retail / Sustainability',
+    tagline:'CIRKULÄR — making sustainability the easy choice',
+    desc:'CIRKULÄR Cannes Gold Lion 2022. Song Nordic CCO + IKEA DK CMO Anne Krogh. Behaviour design at retail scale. Skapa DS is shared with global IKEA.',
+    tags:[['pill-t','Cannes Gold Lion'],['pill-b','Circular retail'],['pill-p','Skapa DS public']],
+    brand:{ bg:'#002080', txt:'#FFDB00', logobg:'#003399', logotxt:'IKEA',
+      colors:[{h:'#003399',n:'IKEA Blue'},{h:'#FFDB00',n:'IKEA Yellow'},{h:'#5C832F',n:'Sustainability Green'},{h:'#FFFFFF',n:'White'}],
+      font:'Noto Sans — same as global IKEA. All sustainability content uses the green palette.',
+      fontb:'Noto Sans Regular — always accessible, open-source.',
+      sample:'CIRKULÄR. Buy it. Love it. Sell it back.',
+      dsStatus:'✅ Public npm — same Skapa DS as global IKEA (@ingka/* packages)',
+      dsLink:'github.com/ingka-group-digital',
+      tokens:[{c:'#003399',n:'--ikea-blue',v:'#003399'},{c:'#5C832F',n:'--ikea-sustainability-green',v:'#5C832F'},{c:'#FFDB00',n:'--ikea-yellow',v:'#FFDB00'}],
+      social:['Instagram DK: CIRKULÄR campaign drove 12% follower growth','#CIRKULÄR mechanic: share your refurbished item find','Sustainability content is IKEA DK\'s dominant theme','Nordic CCO Adam Kerj is a recognisable face in DK creative industry','Award season amplification of Cannes win drove PR spike'],
+      engagements:['CIRKULÄR circular retail campaign — Cannes Gold Lion 2022','Consumer behaviour change through in-store design','Buy-back/refurbish/resell customer journey design','Sustainability communications strategy for DK market','Nordic CCO Adam Kerj as relationship lead'],
+      insight:'CIRKULÄR is Song\'s most replicable Nordic framework. H&M, Coop, and Varner all face the same circular economy pressure — Song can pitch a "CIRKULÄR-for-your-brand" sprint using the exact same model.',
+      protos:['CIRKULÄR v2: personalised trade-in valuation tool','Circular product passport (QR-linked item history)','Carbon saving calculator for second-hand vs new purchase']
+    }
+  }
+];
+
+function renderClients(filter='all') {
+  const grid = document.getElementById('client-grid');
+  let vis = 0;
+  grid.innerHTML = '';
+  DATA.forEach(c => {
+    let show = filter === 'all' || filter === c.country || (filter === 'ds' && c.ds) || (filter === 'active' && c.status === 'active') || (filter === 'new' && c.status === 'new');
+    if (!show) return;
+    vis++;
+    const tags = c.tags.map(t=>`<span class="pill ${t[0]}">${t[1]}</span>`).join('');
+    const sp = c.status === 'active' ? '<span class="sp sp-a"><span class="sp-dot"></span>Active</span>' : '<span class="sp sp-n"><span class="sp-dot"></span>New</span>';
+    const el = document.createElement('div');
+    el.className = 'card';
+    el.onclick = () => openModal(c.id);
+    el.innerHTML = `<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:9px;"><div style="display:flex;align-items:center;gap:9px;flex:1;min-width:0;"><div style="width:38px;height:38px;border-radius:var(--r);background:${c.brand.logobg};color:${c.brand.txt};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">${c.brand.logotxt}</div><div><div class="card-name">${c.name}</div><div class="card-sub">${c.flag} ${c.country} · ${c.sector}</div></div></div>${sp}</div><p class="card-desc">${c.desc}</p><div class="pill-row">${tags}</div><div class="cta">Brand profile →</div>`;
+    grid.appendChild(el);
+  });
+  document.getElementById('cnt').textContent = vis;
+}
+
+function filterC(f, btn) {
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderClients(f);
+}
+
+function openModal(id) {
+  const c = DATA.find(x=>x.id===id);
+  if (!c) return;
+  const b = c.brand;
+
+  document.getElementById('m-brand').style.background = b.bg;
+  document.getElementById('m-brand').style.color = b.txt;
+  document.getElementById('m-brand').innerHTML = `<div class="m-logo" style="background:${b.logobg};color:${b.txt};">${b.logotxt}</div><div class="m-name" style="color:${b.txt};">${c.name}</div><div class="m-tagline" style="color:${b.txt};">${c.tagline}</div>`;
+
+  const tabs = ['Brand & DS','Social','Engagements','Prototypes','AI Agent'];
+  document.getElementById('m-tabs').innerHTML = tabs.map((t,i)=>`<div class="m-tab${i===0?' active':''}" onclick="switchTab(${i},this)">${t}</div>`).join('');
+
+  const swatches = b.colors.map(sw=>`<div class="swatch"><div class="sw-block" style="background:${sw.h};"></div><div class="sw-label">${sw.h}<br>${sw.n}</div></div>`).join('');
+  const tokens = (b.tokens||[]).map(t=>`<div class="token-row"><div class="token-swatch" style="background:${t.c};"></div><div class="token-name">${t.n}</div><div class="token-val">${t.v}</div></div>`).join('');
+  const socialItems = (b.social||[]).map(s=>`<li class="bullet-item"><span class="bullet-dot"></span><span class="bullet-text">${s}</span></li>`).join('');
+  const engItems = (b.engagements||[]).map(e=>`<li class="bullet-item"><span class="bullet-dot"></span><span class="bullet-text">${e}</span></li>`).join('');
+  const protoItems = (b.protos||[]).map((p,i)=>`<div class="proto-card" style="margin-bottom:10px;"><div style="font-size:13px;font-weight:600;margin-bottom:5px;">${p}</div><div style="font-size:11px;color:var(--t3);">Concept ${i+1} · Song NL/Nordic team</div></div>`).join('');
+
+  document.getElementById('m-panels').innerHTML = `
+    <div class="m-panel active" id="mp-0">
+      <div class="m-sec">Brand colors</div>
+      <div class="swatch-row">${swatches}</div>
+      <div class="m-sec" style="margin-top:14px;">Typography</div>
+      <div class="font-demo"><div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--t1);margin-bottom:4px;">${b.sample}</div></div>
+      <div style="font-size:11px;color:var(--t3);margin-bottom:2px;">${b.font}</div>
+      <div style="font-size:11px;color:var(--t3);margin-bottom:16px;">${b.fontb}</div>
+      <div class="m-sec">Design system</div>
+      <div style="background:var(--s3);border-radius:var(--r);padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--t2);">${b.dsStatus}</div>
+      ${tokens ? `<div class="m-sec">Design tokens</div>${tokens}` : ''}
+    </div>
+    <div class="m-panel" id="mp-1">
+      <div class="m-sec">Social presence & examples</div>
+      <ul class="bullet-list">${socialItems}</ul>
+      <div class="insight-box"><div class="insight-label">Channel strategy</div><div class="insight-text">Based on public post analysis. Use LinkedIn API or Meta Graph API (with client consent) to pull live performance data into this dashboard.</div></div>
+    </div>
+    <div class="m-panel" id="mp-2">
+      <div class="m-sec">Song engagements</div>
+      <ul class="bullet-list">${engItems}</ul>
+      <div class="insight-box"><div class="insight-label">Strategic insight</div><div class="insight-text">${b.insight}</div></div>
+    </div>
+    <div class="m-panel" id="mp-3">
+      <div class="m-sec">Prototype concepts</div>
+      ${protoItems}
+      <div class="insight-box"><div class="insight-label">How to build</div><div class="insight-text">${b.dsStatus.includes('Public') ? `Use ${b.dsStatus.split('—')[0].replace('✅','').trim()} components directly. Install from npm and prototype today.` : 'Fork B01LER (github.com/deven-org/boiler) and apply brand tokens. No client DS access needed for concept prototyping.'}</div></div>
+    </div>
+    <div class="m-panel" id="mp-4">
+      ${buildAgentPanel(c)}
+    </div>
+  `;
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setAgentContext(c);
+}
+
+function switchTab(i, btn) {
+  document.querySelectorAll('.m-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.m-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('mp-'+i).classList.add('active');
+}
+
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
+function closeOnBg(e) { if (e.target===document.getElementById('modal-overlay')) closeModal(); }
+
+function showPage(id, tab) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if (tab) tab.classList.add('active');
+}
+
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+renderClients('all');
+
+/* ═══════════════════════════════════════════════════
+   AGENT LAYER
+   Calls the Anthropic API directly from the browser.
+   Token data stays in memory only — never sent to any
+   server other than api.anthropic.com for this request.
+═══════════════════════════════════════════════════ */
+
+// Tracks which client modal is open and its DS context
+let _agentClient = null;
+
+// Called by openModal — sets context for the agent
+function setAgentContext(client) {
+  _agentClient = client;
+}
+
+// Builds the agent panel HTML injected into mp-4
+function buildAgentPanel(c) {
+  const dsMode = c.brand.dsStatus.startsWith('✅') ? 'public' : 'reference';
+  const banner = dsMode === 'public'
+    ? `<div class="agent-ds-banner">● Live design tokens available — agent will use real ${c.name} token values</div>`
+    : `<div class="agent-ref-banner">◆ Reference mode — agent uses publicly known brand data. Not client-approved.</div>`;
+
+  const modes = [
+    { id:'concept',   label:'Generate concept',    hint:'Describe a product idea or feature to prototype' },
+    { id:'audit',     label:'Audit components',    hint:'What user flow do you want to build?' },
+    { id:'mvpflow',   label:'Build MVP flow',      hint:'Which feature or journey?' },
+    { id:'copywrite', label:'Write UI copy',        hint:'Describe a screen or component' },
+    { id:'freeform',  label:'Ask anything',         hint:'Ask any question about this client or their design system' },
+  ];
+
+  const modeBtns = modes.map(m =>
+    `<button class="agent-mode-btn" data-mode="${m.id}" data-hint="${m.hint}"
+       onclick="selectMode(this)">${m.label}</button>`
+  ).join('');
+
+  return `
+    <div class="agent-wrap" id="agent-wrap-${c.id}">
+      ${banner}
+      <div>
+        <div class="m-sec" style="margin-bottom:8px;">What do you want to do?</div>
+        <div class="agent-mode-row">${modeBtns}</div>
+      </div>
+      <div class="agent-input-row">
+        <textarea class="agent-input" id="agent-input-${c.id}"
+          placeholder="Select a mode above, or just type your question…"
+          rows="2"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();runAgent('${c.id}')}"
+        ></textarea>
+        <button class="agent-run-btn" id="agent-btn-${c.id}" onclick="runAgent('${c.id}')">
+          Run →
+        </button>
+      </div>
+      <div class="agent-output" id="agent-output-${c.id}">
+        <div class="agent-placeholder">Output will appear here. Select a mode and describe what you need.</div>
+      </div>
+    </div>
+  `;
+}
+
+// Highlights the selected mode button and updates placeholder
+function selectMode(btn) {
+  const wrap = btn.closest('.agent-wrap');
+  wrap.querySelectorAll('.agent-mode-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  // Find the input in the same panel
+  const input = wrap.querySelector('.agent-input');
+  if (input) {
+    input.placeholder = btn.dataset.hint || 'Describe what you need…';
+    input.focus();
+  }
+}
+
+// Builds the system prompt from the client's DS data
+function buildSystemPrompt(c) {
+  const b = c.brand;
+  const dsMode = b.dsStatus.startsWith('✅') ? 'live' : 'reference';
+  const tokenSummary = (b.tokens || [])
+    .map(t => `${t.n}: ${t.v}`)
+    .join(', ');
+  const colorSummary = (b.colors || [])
+    .map(col => `${col.n}: ${col.h}`)
+    .join(', ');
+
+  return `You are a senior product designer and creative technologist at Accenture Song.
+You are helping the Song NL & Nordics team with a client intelligence and prototyping task.
+
+CLIENT: ${c.name}
+Country: ${c.country} | Sector: ${c.sector}
+Current Song engagement: ${(c.brand.engagements || []).join('; ')}
+Strategic insight: ${c.brand.insight || 'N/A'}
+
+DESIGN SYSTEM (${dsMode.toUpperCase()} MODE):
+${dsMode === 'live'
+  ? `Design tokens available: ${tokenSummary}`
+  : `Reference data only — not from official design system. Use with caution.`}
+Brand colours: ${colorSummary}
+Display font: ${b.font}
+Body font: ${b.fontb}
+DS status: ${b.dsStatus}
+
+RULES:
+- Use only the token values listed above. Do not invent colours or hex codes.
+- Keep concepts practical for Song's current scope with this client.
+- If reference mode: always say "reference prototype — not based on official DS" in your output.
+- Format responses with clear section headers using markdown (### Header).
+- Be concise and actionable — teams should be able to act on your output immediately.
+- For code, use the exact token values provided above as CSS custom properties.`;
+}
+
+// Formats the raw API text response into clean HTML
+function formatResponse(text) {
+  return text
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+    .replace(/\n{2,}/g, '\n')
+    .trim();
+}
+
+// Main agent runner
+async function runAgent(clientId) {
+  const c = DATA.find(x => x.id === clientId);
+  if (!c) return;
+
+  const input = document.getElementById(`agent-input-${clientId}`);
+  const output = document.getElementById(`agent-output-${clientId}`);
+  const btn = document.getElementById(`agent-btn-${clientId}`);
+  const wrap = document.getElementById(`agent-wrap-${clientId}`);
+
+  const userText = input.value.trim();
+  if (!userText) {
+    input.focus();
+    return;
+  }
+
+  // Get active mode (if any)
+  const activeMode = wrap.querySelector('.agent-mode-btn.selected');
+  const mode = activeMode?.dataset.mode || 'freeform';
+
+  // Build mode-specific user message
+  const modePrefix = {
+    concept:   `Generate a prototype concept for ${c.name}. Brief: `,
+    audit:     `Audit what design system components are needed and what's missing to build: `,
+    mvpflow:   `Create a step-by-step MVP user flow with screen names, components and copy for: `,
+    copywrite: `Write UI copy in ${c.name}'s tone of voice for: `,
+    freeform:  '',
+  };
+  const fullPrompt = (modePrefix[mode] || '') + userText;
+
+  // UI: loading state
+  btn.disabled = true;
+  btn.textContent = '…';
+  output.className = 'agent-output loading';
+  output.innerHTML = '<div class="agent-spinner">Thinking…</div>';
+
+  try {
+    const res = await fetch('/api/claude', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1024,
+        system: buildSystemPrompt(c),
+        messages: [{ role: 'user', content: fullPrompt }],
+      }),
+    });
+
+    if (res.status === 401) throw new Error('NO_KEY');
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || `API error ${res.status}`);
+    }
+
+    const data = await res.json();
+    const text = data.content?.[0]?.text || '(no response)';
+
+    // Render formatted response
+    output.className = 'agent-output';
+    output.innerHTML = `
+      <div class="agent-result">${formatResponse(text)}</div>
+      <button class="agent-copy-btn" onclick="copyOutput(this)">Copy output</button>
+    `;
+
+  } catch (err) {
+    output.className = 'agent-output';
+
+    if (err.message === 'NO_KEY' || !window.ANTHROPIC_KEY) {
+      // Show setup instructions instead of a cryptic error
+      output.innerHTML = `
+        <div class="agent-result">
+          <h3>API key not configured</h3>
+          The proxy function is running but <code>ANTHROPIC_API_KEY</code> is not set
+          in your Netlify environment variables yet.<br><br>
+          Go to: <strong>Vercel dashboard → Your project → Settings → Environment Variables</strong><br>
+          Add variable: <code>ANTHROPIC_API_KEY</code> = your key<br>
+          Then redeploy (Deployments → Redeploy).
+        </div>
+      `;
+    } else {
+      output.innerHTML = `
+        <div class="agent-result">
+          <h3>Error</h3>
+          ${err.message}<br><br>
+          Check that your API key is valid and has credits.
+        </div>
+      `;
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Run →';
+  }
+}
+
+// Copy output text to clipboard
+function copyOutput(btn) {
+  const text = btn.previousElementSibling?.textContent || '';
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => { btn.textContent = 'Copy output'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
